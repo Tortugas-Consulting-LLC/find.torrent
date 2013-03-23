@@ -27,7 +27,6 @@
   }],
   "require": {
     "vlucas/bulletphp": "*",
-    "phpunit/phpunit": "3.7.*",
     "twitter/bootstrap": "*",
     "jquery/jquery": "*"
   }
