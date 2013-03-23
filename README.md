@@ -59,7 +59,6 @@ Documentation for the service's API is provided in the following form.
   },
   "service": "find.torrent",
   "about": "The find.torrent service is an open source project from Tortugas Consulting, LLC",
-  "uptime": 259200,
   "version": "0.0.1"
 }
 ```
