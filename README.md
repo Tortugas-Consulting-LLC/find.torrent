@@ -17,7 +17,7 @@ Installation
 
 Configuration
 -------------
-Edit `config.example.php` then move it to `config.php`.
+Edit `config.example.ini` then move it to `config.ini`.
 
 API Documentation
 -----------------
