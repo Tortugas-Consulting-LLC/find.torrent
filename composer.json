@@ -14,10 +14,21 @@
         "type": "zip"
       }
     }
+  },{
+    "type": "package",
+      "package": {
+        "name": "jquery/jquery",
+        "version": "1.9.1",
+        "dist": {
+          "url": "http://code.jquery.com/jquery-1.9.1.min.js",
+          "type": "file"
+        }
+      }
   }],
   "require": {
     "vlucas/bulletphp": "*",
     "phpunit/phpunit": "3.7.*",
-    "twitter/bootstrap": "*"
+    "twitter/bootstrap": "*",
+    "jquery/jquery": "*"
   }
 }
