@@ -27,7 +27,7 @@ class IndexTest extends BulletTestCase
 
         $this->assertTrue(isset($json->_links->search));
         $this->assertTrue(isset($json->_links->search->href));
-        $this->assertEquals('/feed/search/{?term}', $json->_links->search->href);
+        $this->assertEquals('/feeds/search/{?term}', $json->_links->search->href);
         $this->assertTrue(isset($json->_links->search->templated));
         $this->assertEquals(true, $json->_links->search->templated);
 

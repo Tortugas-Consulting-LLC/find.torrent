@@ -17,15 +17,15 @@ Installation
 
 Configuration
 -------------
-Edit `config.example.ini` then move it to `config.ini`.
+Edit `src/config/config.example.ini` then copy it to `src/config/config.ini`.
 
 API Documentation
 -----------------
-A complete record of the API calls serviced by find.torrent is included here. Example data is used here for context. Responses are of the type [application/hal+json](http://stateless.co/hal_specification.html)
+A complete record of the API calls serviced by find.torrent is included here. Example data is used for context. Responses are of the type [application/hal+json](http://stateless.co/hal_specification.html)
 
 Documentation for the service's API is provided in the following form.
 
-`METHOD /route/`
+`HTTP METHOD /route/`
 ```json
 {
   "JSON respone": "Huzzah!"

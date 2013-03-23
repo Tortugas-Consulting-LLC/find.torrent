@@ -9,7 +9,7 @@ class BulletTestCase extends \PHPUnit_Framework_TestCase
     protected function getApp()
     {
         if(null === $this->app) {
-            require __DIR__ . '/../app.inc.php';
+            require __DIR__ . '/../src/app.inc.php';
             $this->app = $app;
         }
 
