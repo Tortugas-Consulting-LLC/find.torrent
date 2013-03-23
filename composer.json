@@ -1,0 +1,23 @@
+{
+  "repositories": [{
+    "type": "package",
+    "package": {
+      "version": "2.2.1",
+      "name": "twitter/bootstrap",
+      "source": {
+        "url": "https://github.com/twitter/bootstrap.git",
+        "type": "git",
+        "reference": "master"
+      },
+      "dist": {
+        "url": "https://github.com/twitter/bootstrap/zipball/master",
+        "type": "zip"
+      }
+    }
+  }],
+  "require": {
+    "vlucas/bulletphp": "*",
+    "phpunit/phpunit": "3.7.*",
+    "twitter/bootstrap": "*"
+  }
+}
