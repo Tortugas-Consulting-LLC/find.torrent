@@ -21,6 +21,8 @@ Documentation for the service's API is provided in the following form.
       "JSON respone": "Huzzah!"
     }
 
+---
+
 `GET /`
 
     {
@@ -34,6 +36,8 @@ Documentation for the service's API is provided in the following form.
       "welcome": "Welcome to the find.torrent service"
     }
 
+---
+
 `GET /about/`
 
     {
@@ -46,6 +50,8 @@ Documentation for the service's API is provided in the following form.
       "uptime": 259200,
       "version": "0.0.1"
     }
+
+---
 
 `GET /feeds/`
 
@@ -79,6 +85,8 @@ Documentation for the service's API is provided in the following form.
         ]
       }
     }
+
+---
 
 `GET /feeds/search/term`  
 `GET /feeds/id/search/term`  
@@ -116,9 +124,9 @@ _Searched for term 'ubuntu'_
       }
     }
 
-`GET /feeds/history`
-
 ---
+
+`GET /feeds/history`
 
     {
       "_links": {
@@ -167,9 +175,9 @@ _Searched for term 'ubuntu'_
       }
     }
 
-`GET /feeds/id/history`
-
 ---
+
+`GET /feeds/id/history`
 
     {
       "_links": {
