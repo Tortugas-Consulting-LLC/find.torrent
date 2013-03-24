@@ -5,8 +5,7 @@ $app->path('/', function($request) use($app) {
             'self'    => array ( 'href' => '/'),
             'about'   => array ( 'href' => '/about/'),
             'feeds'   => array ( 'href' => '/feeds/'),
-            'search'  => array ( 'href' => '/feeds/search/{?term}', 'templated' => true),
-            'history' => array ( 'href' => '/feeds/history/')
+            'search'  => array ( 'href' => '/feeds/search/{?term}', 'templated' => true)
         ),
         'welcome' => $app->offsetGet('welcome_msg')
     );

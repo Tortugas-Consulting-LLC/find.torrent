@@ -19,7 +19,6 @@ class IndexTest extends BulletTestCase
             array('self',    '/'),
             array('about',   '/about/'),
             array('feeds',   '/feeds/'),
-            array('history', '/feeds/history/'),
             array('search',  '/feeds/search/{?term}'),
         );
     }
