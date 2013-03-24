@@ -113,13 +113,31 @@ _Searched for term 'ubuntu'_
   "_links": {
     "self": { "href": "/feeds/search/ubuntu" },
     "home": { "href": "/" },
-    "feeds": { "href": "/feeds/" }
+    "feeds": { "href": "/feeds/" },
+    "downloads" {[
+        {
+          "title": "f36c92a8f78a1aff70a61a5f5bfe5e6757176133",
+          "href": "/download/",
+          "method": "PUT",
+          "body": {
+              "hash": "f36c92a8f78a1aff70a61a5f5bfe5e6757176133"
+          }
+        },
+        {
+          "title": "daa7d9348b5d289a58b91c98483b17417b266ff",
+          "href": "/download/",
+          "method": "PUT",
+          "body": {
+              "hash": "daa7d9348b5d289a58b91c98483b17417b266ff"
+          }
+        },
+    ]}
   },
   "_embedded": {
     "downloads": [
       {
-        "href": "/download/f36c92a8f78a1aff70a61a5f5bfe5e6757176133",
-        "title": "ubuntu-12.10-desktop-amd64.iso",
+        "title": "f36c92a8f78a1aff70a61a5f5bfe5e6757176133",
+        "name": "ubuntu-12.10-desktop-amd64.iso",
         "files": [
           { "title": "ubuntu-12.10-desktop-amd64.iso", "bytes": 711983104 },
           { "title": "README", "bytes": 149 }
@@ -128,14 +146,14 @@ _Searched for term 'ubuntu'_
         "leachers": 4
       },
       {
-        "href": "/download/daa7d9348b5d289a58b91c98483b17417b266ff",
-        "title": "ubuntu-11.10-server-i386.iso",
+        "title": "daa7d9348b5d289a58b91c98483b17417b266ff",
+        "name": "ubuntu-11.10-server-i386.iso",
         "files": [
           { "title": "ubuntu-11.10-server-i386.iso", "bytes": 791323718 },
           { "title": "README", "bytes": 192 }
         ],
         "seeders": 24,
-        "leechers": 9
+        "leachers": 9
       }
     ]
   }
@@ -187,7 +205,7 @@ _Searched for term 'ubuntu'_
             "url": "http://thepiratebay.se",
           }
         },
-        "title": "ubuntu-11.10-server-i386.iso"<
+        "title": "ubuntu-11.10-server-i386.iso",
         "date": "2012-11-25 00:00:00"
       }
     ]
@@ -229,28 +247,19 @@ _Searched for term 'ubuntu'_
 
 ---
 
-    // TODO Spec from here down
-    // PUT /download/
-        // Request
-            { hash: 'hash' }
-        // Response TODO Check for the convention ( Turland sent this to you )
-            {
-                status: 200,
-                message: 'Whatever',
-                error: 'Error'
-            }
-    // PUT /feeds/status
-        // Request
-            {
-                [
-                    { feed_id: 1, status: 'on' },
-                    { feed_id: 2, status: 'off' },
-                    { feed_id: 3, status: 'on' }
-                ]
-            }
-        // Response
-            {
-                status: 200,
-                message: 'Whatever',
-                error: 'Error'
-            }
+`PUT /download/`  
+*Request body in the form of:*  
+```json
+{
+    "hash": "daa7d9348b5d289a58b91c98483b17417b266ff"
+}
+```
+
+*Response:*  
+```json
+{
+    "status": 200,
+    "message": "Success message",
+    "error": "Error message"
+}
+```
