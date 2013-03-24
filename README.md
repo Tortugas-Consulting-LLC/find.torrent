@@ -114,7 +114,7 @@ _Searched for term 'ubuntu'_
     "self": { "href": "/feeds/search/ubuntu" },
     "home": { "href": "/" },
     "feeds": { "href": "/feeds/" },
-    "downloads" {[
+    "downloads": [
         {
           "title": "f36c92a8f78a1aff70a61a5f5bfe5e6757176133",
           "href": "/download/",
@@ -130,8 +130,8 @@ _Searched for term 'ubuntu'_
           "body": {
               "hash": "daa7d9348b5d289a58b91c98483b17417b266ff"
           }
-        },
-    ]}
+        }
+    ]
   },
   "_embedded": {
     "downloads": [
