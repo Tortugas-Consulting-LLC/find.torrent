@@ -1,12 +1,14 @@
 <?php
 $app->path('/', function($request) use($app) {
-    return array(
-        '_links' => array (
-            'self'    => array ( 'href' => '/'),
-            'about'   => array ( 'href' => '/about/'),
-            'feeds'   => array ( 'href' => '/feeds/'),
-            'search'  => array ( 'href' => '/feeds/search/{?term}', 'templated' => true)
-        ),
-        'welcome' => $app->offsetGet('welcome_msg')
-    );
+
+    $data = array('welcome' => $app->offsetGet('welcome_msg'));
+
+    $hal = new \Nocarrier\Hal('/', $data);
+
+    $hal->addLink('self', '/');
+    $hal->addLink('about', '/about/');
+    $hal->addLink('feeds', '/feeds/');
+    $hal->addLink('search', '/feeds/search/{?term}', array('templated' => true));
+
+    return $hal;
 });
