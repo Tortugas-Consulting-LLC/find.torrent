@@ -1,7 +1,9 @@
 {
   "require": {
-    "vlucas/bulletphp": "*"
+    "vlucas/bulletphp": "*",
+    "nocarrier/hal": "*"
   },
+  "minimum-stability": "dev",
   "autoload": {
     "psr-0": {"App": "lib/"}
   }
