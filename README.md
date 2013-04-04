@@ -23,7 +23,7 @@ Edit `src/config/config.example.ini` then copy it to `src/config/config.ini`.
 
 API Documentation
 -----------------
-A complete record of the API calls serviced by find.torrent is included here. Example data is used for context. Responses are of the type [application/hal+json](http://stateless.co/hal_specification.html)
+A complete record of the API calls serviced by find.torrent is included here. Example data is used for context. Responses are in either [application/hal+json or application/hal+xml](http://stateless.co/hal_specification.html)
 
 Documentation for the service's API is provided in the following form.
 
@@ -40,10 +40,17 @@ Documentation for the service's API is provided in the following form.
 ```json
 {
   "_links": {
+    "curies": [
+      {
+        "name": "ft",
+        "href": "*protocol*://*domain*:*port*/rels/{rel}",
+        "templated": true
+      }
+    ],
     "self": { "href": "/" },
-    "about": { "href": "/about/" },
-    "feeds": { "href": "/feeds/" },
-    "search": { "href": "/feeds/search/{?term}", "templated": true }
+    "ft:about": { "href": "/about/" },
+    "ft:feeds": { "href": "/feeds/" },
+    "ft:search": { "href": "/feeds/search/{?term}", "templated": true }
   },
   "welcome": "Welcome to the find.torrent service"
 }
@@ -55,8 +62,15 @@ Documentation for the service's API is provided in the following form.
 ```json
 {
   "_links": {
+    "curies": [
+      {
+        "name": "ft",
+        "href": "*protocol*://*domain*:*port*/rels/{rel}",
+        "templated": true
+      }
+    ],
     "self": { "href": "/about/" },
-    "home": { "href": "/" }
+    "ft:home": { "href": "/" }
   },
   "service": "find.torrent",
   "about": "The find.torrent service is an open source project from Tortugas Consulting, LLC",
@@ -71,24 +85,45 @@ Documentation for the service's API is provided in the following form.
 ```json
 {
   "_links": {
+    "curies": [
+      {
+        "name": "ft",
+        "href": "*protocol*://*domain*:*port*/rels/{rel}",
+        "templated": true
+      }
+    ],
     "self": { "href": "/feeds/" },
-    "home": { "href": "/" },
-    "search": { "href": "/feeds/search/{?term}", "templated": true }
+    "ft:home": { "href": "/" },
+    "ft:search": { "href": "/feeds/search/{?term}", "templated": true }
   },
   "_embedded": {
     "feeds": [
       {
         "_links": {
+          "curies": [
+            {
+              "name": "ft",
+              "href": "*protocol*://*domain*:*port*/rels/{rel}",
+              "templated": true
+            }
+          ],
           "self": { "href": "/feeds/1" },
-          "search": { "href": "/feeds/1/search/{?term}", "templated": true }
+          "ft:search": { "href": "/feeds/1/search/{?term}", "templated": true }
         },
         "title": "Kick Ass Torrents",
         "url": "http://kat.ph"
       },
       {
         "_links": {
+          "curies": [
+            {
+              "name": "ft",
+              "href": "*protocol*://*domain*:*port*/rels/{rel}",
+              "templated": true
+            }
+          ],
           "self": { "href": "/feeds/2" },
-          "search": { "href": "/feeds/2/search/{?term}", "templated": true }
+          "ft:search": { "href": "/feeds/2/search/{?term}", "templated": true }
         },
         "title": "The Pirate Bay",
         "url": "http://thepiratebay.se"
@@ -100,50 +135,65 @@ Documentation for the service's API is provided in the following form.
 
 ---
 
-`GET /feeds/search/term`  
-`GET /feeds/id/search/term`  
+`GET /feeds/search/{term}`  
+`GET /feeds/id/search/{term}`  
 _Searched for term 'ubuntu'_
 
 ```json
 {
   "_links": {
+    "curies": [
+      {
+        "name": "ft",
+        "href": "*protocol*://*domain*:*port*/rels/{rel}",
+        "templated": true
+      }
+    ],
     "self": { "href": "/feeds/search/ubuntu" },
-    "home": { "href": "/" },
-    "feeds": { "href": "/feeds/" },
-    "downloads": [
-        {
-          "title": "f36c92a8f78a1aff70a61a5f5bfe5e6757176133",
-          "href": "/download/",
-          "method": "PUT",
-          "body": {
-              "hash": "f36c92a8f78a1aff70a61a5f5bfe5e6757176133"
-          }
-        },
-        {
-          "title": "daa7d9348b5d289a58b91c98483b17417b266ff",
-          "href": "/download/",
-          "method": "PUT",
-          "body": {
-              "hash": "daa7d9348b5d289a58b91c98483b17417b266ff"
-          }
-        }
-    ]
+    "ft:home": { "href": "/" },
+    "ft:feeds": { "href": "/feeds/" },
   },
   "_embedded": {
-    "downloads": [
-      {
-        "title": "f36c92a8f78a1aff70a61a5f5bfe5e6757176133",
-        "name": "ubuntu-12.10-desktop-amd64.iso",
-        "files": [
-          { "title": "ubuntu-12.10-desktop-amd64.iso", "bytes": 711983104 },
-          { "title": "README", "bytes": 149 }
-        ],
-        "seeders": 12,
-        "leachers": 4
+    "ft:results": [
+       {
+         "_links": {
+           "curies": [
+             {
+               "name": "ft",
+               "href": "*protocol*://*domain*:*port*/rels/{rel}",
+               "templated": true
+             }
+           ],
+           "ft:result": {
+             "href": "/download/f36c92a8f78a1aff70a61a5f5bfe5e6757176133",
+             "method": "PUT"
+           }
+         },
+         "name": "ubuntu-12.10-desktop-amd64.iso",
+         "hash": "f36c92a8f78a1aff70a61a5f5bfe5e6757176133",
+         "files": [
+           { "title": "ubuntu-12.10-desktop-amd64.iso", "bytes": 711983104 },
+           { "title": "README", "bytes": 149 }
+         ],
+         "seeders": 12,
+         "leachers": 4
       },
       {
-        "title": "daa7d9348b5d289a58b91c98483b17417b266ff",
+        "_links": {
+          "curies": [
+            {
+              "name": "ft",
+              "href": "*protocol*://*domain*:*port*/rels/{rel}",
+              "templated": true
+            }
+          ],
+          "ft:result": {
+            "href": "/download/daa7d9348b5d289a58b91c98483b17417b266ff",
+            "method": "PUT"
+          }
+        },
         "name": "ubuntu-11.10-server-i386.iso",
+        "hash": "daa7d9348b5d289a58b91c98483b17417b266ff",
         "files": [
           { "title": "ubuntu-11.10-server-i386.iso", "bytes": 791323718 },
           { "title": "README", "bytes": 192 }
@@ -158,15 +208,9 @@ _Searched for term 'ubuntu'_
 
 ---
 
-`PUT /download/`  
-*Request body in the form of:*  
-```json
-{
-    "hash": "daa7d9348b5d289a58b91c98483b17417b266ff"
-}
-```
+`PUT /download/{hash}`  
+`PUT /download/daa7d9348b5d289a58b91c98483b17417b266ff`  
 
-*Response:*  
 ```json
 {
     "status": 200,
