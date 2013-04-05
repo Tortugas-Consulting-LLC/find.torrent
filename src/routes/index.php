@@ -1,14 +1,14 @@
 <?php
 $app->path('/', function($request) use($app) {
-
-    $data = array('welcome' => $app->offsetGet('welcome_msg'));
+    $data = array('welcome' => $app['welcome_msg']);
 
     $hal = new \Nocarrier\Hal('/', $data);
+    $app['HalHandler']->addMyCurie($hal);
 
     $hal->addLink('self', '/');
-    $hal->addLink('about', '/about/');
-    $hal->addLink('feeds', '/feeds/');
-    $hal->addLink('search', '/feeds/search/{?term}', array('templated' => true));
+    $hal->addLink('ft:about', '/about/');
+    $hal->addLink('ft:feeds', '/feeds/');
+    $hal->addLink('ft:search', '/feeds/search/{?term}', array('templated' => true));
 
     return $hal;
 });

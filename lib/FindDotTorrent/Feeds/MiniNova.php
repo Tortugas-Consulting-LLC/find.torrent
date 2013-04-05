@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Feeds;
+namespace FindDotTorrent\Feeds;
 
 class MiniNova implements IFeed
 {

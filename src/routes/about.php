@@ -7,8 +7,11 @@ $app->path('/about/', function($request) use($app) {
     );
 
     $hal = new \Nocarrier\Hal('/about/', $data);
+
+    $app['HalHandler']->addMyCurie($hal);
+
     $hal->addLink('self', '/about/');
-    $hal->addLink('home', '/');
+    $hal->addLink('ft:home', '/');
 
     return $hal;
 });

@@ -5,6 +5,6 @@
   },
   "minimum-stability": "dev",
   "autoload": {
-    "psr-0": {"App": "lib/"}
+    "psr-0": {"FindDotTorrent": "lib/"}
   }
 }

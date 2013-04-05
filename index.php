@@ -1,4 +1,7 @@
 <?php
+
 require __DIR__ . '/vendor/autoload.php';
-require __DIR__ . '/src/app.inc.php';
+
+$app = new FindDotTorrent\App();
+
 echo $app->run(new Bullet\Request());

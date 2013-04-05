@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Feeds;
+namespace FindDotTorrent\Feeds;
 
 interface IFeed {
     public function search($term);

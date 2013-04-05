@@ -13,13 +13,18 @@ class IndexTest extends BulletTestCase
         $this->json = json_decode($response->content());
     }
 
+    public function testCurieIsPresent()
+    {
+        $this->assertTrue(isset($this->json->_links->curies));
+    }
+
     public function linksProvider()
     {
         return array(
             array('self',    '/'),
-            array('about',   '/about/'),
-            array('feeds',   '/feeds/'),
-            array('search',  '/feeds/search/{?term}'),
+            array('ft:about',   '/about/'),
+            array('ft:feeds',   '/feeds/'),
+            array('ft:search',  '/feeds/search/{?term}'),
         );
     }
 
@@ -34,8 +39,8 @@ class IndexTest extends BulletTestCase
 
     public function testSearchIsMarkedAsTemplated()
     {
-        $this->assertTrue(isset($this->json->_links->search->templated));
-        $this->assertEquals(true, $this->json->_links->search->templated);
+        $this->assertTrue(isset($this->json->_links->{'ft:search'}->templated));
+        $this->assertEquals(true, $this->json->_links->{'ft:search'}->templated);
     }
 
     public function testWelcomeMessage()

@@ -13,11 +13,16 @@ class AboutTest extends BulletTestCase
         $this->json = json_decode($response->content());
     }
 
+    public function testCurieIsPresent()
+    {
+        $this->assertTrue(isset($this->json->_links->curies));
+    }
+
     public function linksProvider()
     {
         return array(
             array('self', '/about/'),
-            array('home', '/'),
+            array('ft:home', '/'),
         );
     }
 
@@ -33,7 +38,7 @@ class AboutTest extends BulletTestCase
     public function testServiceName()
     {
         $this->assertTrue(isset($this->json->service));
-        $this->assertEquals('find.torrent', $this->json->service);
+        $this->assertEquals('find.torrent', $this->json->service); // TODO define this in the test config
     }
 
     public function testAboutMessageIsPresent()
