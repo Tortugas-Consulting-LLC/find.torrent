@@ -1,0 +1,41 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Mininova</title>
+        <link>http://www.mininova.org/</link>
+        <description>
+            Mininova RSS feed of search results for "12 angry men"
+        </description>
+        <language>en-us</language>
+        <atom:link href="http://www.mininova.org/rss/12+angry+men" rel="self" type="application/rss+xml"/>
+        <item>
+            <title>
+                Dave - King of the trowsers - 128kbps plus covers - ANGRY GENTLEMEN RECORDS
+            </title>
+            <guid>http://www.mininova.org/tor/2461403</guid>
+            <pubDate>Tue, 07 Apr 2009 11:03:32 +0200</pubDate>
+            <category>Music</category>
+            <link>http://www.mininova.org/tor/2461403</link>
+            <enclosure url="http://www.mininova.org/get/2461403" length="7648449" type="application/x-bittorrent"/>
+            <description>
+                <![CDATA[
+                Category: <a href="http://www.mininova.org/cat/5">Music</a><br /> Subcategory: <a href="http://www.mininova.org/sub/623">Comedy</a><br /> Size: 7.29&nbsp;megabyte<br /> Ratio: 1 seeds, 0 leechers<br /> Language: Unknown<br /> Uploaded by: <a href="http://www.mininova.org/user/AngryGentlemen">AngryGentlemen</a>
+                ]]>
+            </description>
+        </item>
+        <item>
+            <title>
+                VIRGIN SHITHOUSE - 'Baggy Trowsers' and 'Peach' plus covers - 128kbps - ANGRY GENTLEMEN RECORDS
+            </title>
+            <guid>http://www.mininova.org/tor/2357085</guid>
+            <pubDate>Sun, 08 Mar 2009 16:05:54 +0100</pubDate>
+            <category>Music</category>
+            <link>http://www.mininova.org/tor/2357085</link>
+            <enclosure url="http://www.mininova.org/get/2357085" length="6989058" type="application/x-bittorrent"/>
+            <description>
+                <![CDATA[
+                Category: <a href="http://www.mininova.org/cat/5">Music</a><br /> Subcategory: <a href="http://www.mininova.org/sub/75">Rock</a><br /> Size: 6.67&nbsp;megabyte<br /> Ratio: 1 seeds, 0 leechers<br /> Language: Unknown<br /> Uploaded by: <a href="http://www.mininova.org/user/AngryGentlemen">AngryGentlemen</a>
+                ]]>
+            </description>
+        </item>
+    </channel>
+</rss>

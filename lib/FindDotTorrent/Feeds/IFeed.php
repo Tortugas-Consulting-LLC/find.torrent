@@ -3,5 +3,6 @@
 namespace FindDotTorrent\Feeds;
 
 interface IFeed {
-    public function search($term);
+    public function getUrl($term);
+    public function fetchResults($response);
 }
