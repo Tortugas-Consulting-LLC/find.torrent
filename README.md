@@ -25,59 +25,6 @@ API Documentation
 -----------------
 A complete record of the API calls serviced by find.torrent is included here. Example data is used for context. Responses are in either [application/hal+json or application/hal+xml](http://stateless.co/hal_specification.html)
 
-Documentation for the service's API is provided in the following form.
-
-`HTTP METHOD /route/`
-```json
-{
-  "JSON respone": "Huzzah!"
-}
-```
-
----
-
-`GET /`
-```json
-{
-  "_links": {
-    "curies": [
-      {
-        "name": "ft",
-        "href": "*protocol*://*domain*:*port*/rels/{rel}",
-        "templated": true
-      }
-    ],
-    "self": { "href": "/" },
-    "ft:about": { "href": "/about/" },
-    "ft:feeds": { "href": "/feeds/" },
-    "ft:search": { "href": "/feeds/search/{?term}", "templated": true }
-  },
-  "welcome": "Welcome to the find.torrent service"
-}
-```
-
----
-
-`GET /about/`
-```json
-{
-  "_links": {
-    "curies": [
-      {
-        "name": "ft",
-        "href": "*protocol*://*domain*:*port*/rels/{rel}",
-        "templated": true
-      }
-    ],
-    "self": { "href": "/about/" },
-    "ft:home": { "href": "/" }
-  },
-  "service": "find.torrent",
-  "about": "The find.torrent service is an open source project from Tortugas Consulting, LLC",
-  "version": "0.0.1"
-}
-```
-
 ---
 
 `GET /feeds/`
@@ -97,7 +44,7 @@ Documentation for the service's API is provided in the following form.
     "ft:search": { "href": "/feeds/search/{?term}", "templated": true }
   },
   "_embedded": {
-    "feeds": [
+    "ft:feed": [
       {
         "_links": {
           "curies": [
@@ -108,10 +55,12 @@ Documentation for the service's API is provided in the following form.
             }
           ],
           "self": { "href": "/feeds/1" },
-          "ft:search": { "href": "/feeds/1/search/{?term}", "templated": true }
+          "ft:enable": { "href": "/feeds/1/enable" },
+          "ft:disable": { "href": "/feeds/1/disable" }
         },
         "title": "Kick Ass Torrents",
-        "url": "http://kat.ph"
+        "url": "http://kat.ph",
+        "enabled": false
       },
       {
         "_links": {
@@ -123,10 +72,12 @@ Documentation for the service's API is provided in the following form.
             }
           ],
           "self": { "href": "/feeds/2" },
-          "ft:search": { "href": "/feeds/2/search/{?term}", "templated": true }
+          "ft:enable": { "href": "/feeds/2/enable" },
+          "ft:disable": { "href": "/feeds/2/disable" }
         },
         "title": "The Pirate Bay",
-        "url": "http://thepiratebay.se"
+        "url": "http://thepiratebay.se",
+        "enabled": true
       }
     ]
   }
@@ -154,7 +105,7 @@ _Searched for term 'ubuntu'_
     "ft:feeds": { "href": "/feeds/" },
   },
   "_embedded": {
-    "ft:results": [
+    "ft:result": [
        {
          "_links": {
            "curies": [
@@ -164,7 +115,7 @@ _Searched for term 'ubuntu'_
                "templated": true
              }
            ],
-           "ft:result": {
+           "ft:download": {
              "href": "/download/f36c92a8f78a1aff70a61a5f5bfe5e6757176133",
              "method": "PUT"
            }
@@ -187,7 +138,7 @@ _Searched for term 'ubuntu'_
               "templated": true
             }
           ],
-          "ft:result": {
+          "ft:download": {
             "href": "/download/daa7d9348b5d289a58b91c98483b17417b266ff",
             "method": "PUT"
           }

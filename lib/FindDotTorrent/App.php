@@ -11,6 +11,11 @@ class App extends \Bullet\App
 
         $config = parse_ini_file($dir_config .'/config.ini');
 
+        $config['template.cfg'] = array(
+                'path' => __DIR__ . '/../../src/templates/',
+                'path_layouts' => __DIR__ . '/../../src/templates/layouts/'
+            );
+
         parent::__construct($config);
 
         // In our closures and our route files we reference $app which is just

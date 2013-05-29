@@ -1,7 +1,8 @@
 {
   "require": {
     "vlucas/bulletphp": "*",
-    "nocarrier/hal": "*"
+    "nocarrier/hal": "*",
+    "michelf/php-markdown": "*"
   },
   "minimum-stability": "dev",
   "autoload": {
