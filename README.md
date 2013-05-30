@@ -7,7 +7,7 @@ find.torrent is a service to facilitate the discovery and downloading of torrent
 
 Requirements
 ------------
-* PHP 5.4 (might backport to 5.3. Not tested)
+* PHP 5.3+
 * Composer for dependency management
     * Install with `curl -s http://getcomposer.org/installer | php`
 
