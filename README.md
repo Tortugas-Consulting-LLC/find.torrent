@@ -19,11 +19,13 @@ Installation
 
 Configuration
 -------------
-Edit `src/config/config.example.ini` then copy it to `src/config/config.ini`.
+Copy `src/config/config.example.ini` to `src/config/config.ini` and fill in the blanks.
 
 API Documentation
 -----------------
-A complete record of the API calls serviced by find.torrent is included here. Example data is used for context. Responses are in either [application/hal+json or application/hal+xml](http://stateless.co/hal_specification.html)
+Documentation of the service can be found by browsing to /rels/.
+
+Responses are in either [application/hal+json or application/hal+xml](http://stateless.co/hal_specification.html)
 
 ---
 
@@ -87,7 +89,6 @@ A complete record of the API calls serviced by find.torrent is included here. Ex
 ---
 
 `GET /feeds/search/{term}`  
-`GET /feeds/id/search/{term}`  
 _Searched for term 'ubuntu'_
 
 ```json
