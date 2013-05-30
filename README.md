@@ -106,29 +106,31 @@ _Searched for term 'ubuntu'_
     "ft:feeds": { "href": "/feeds/" },
   },
   "_embedded": {
-    "ft:result": [
-       {
-         "_links": {
-           "curies": [
-             {
-               "name": "ft",
-               "href": "*protocol*://*domain*:*port*/rels/{rel}",
-               "templated": true
-             }
-           ],
-           "ft:download": {
-             "href": "/download/f36c92a8f78a1aff70a61a5f5bfe5e6757176133",
-             "method": "PUT"
-           }
-         },
-         "name": "ubuntu-12.10-desktop-amd64.iso",
-         "hash": "f36c92a8f78a1aff70a61a5f5bfe5e6757176133",
-         "files": [
-           { "title": "ubuntu-12.10-desktop-amd64.iso", "bytes": 711983104 },
-           { "title": "README", "bytes": 149 }
-         ],
-         "seeders": 12,
-         "leachers": 4
+    "ft:torrent": [
+      {
+        "_links": {
+          "curies": [
+            {
+              "name": "ft",
+              "href": "*protocol*://*domain*:*port*/rels/{rel}",
+              "templated": true
+            }
+          ],
+          "ft:download": {
+            "href": "/download",
+            "method": "PUT",
+            "body": {
+              "link": "http://someUrl.com/path/to/torrent"
+            }
+          }
+        },
+        "name": "ubuntu-12.10-desktop-amd64.iso",
+        "files": [
+          { "title": "ubuntu-12.10-desktop-amd64.iso", "bytes": 711983104 },
+          { "title": "README", "bytes": 149 }
+        ],
+        "seeders": 12,
+        "leachers": 4
       },
       {
         "_links": {
@@ -140,12 +142,14 @@ _Searched for term 'ubuntu'_
             }
           ],
           "ft:download": {
-            "href": "/download/daa7d9348b5d289a58b91c98483b17417b266ff",
-            "method": "PUT"
+            "href": "/download",
+            "method": "PUT",
+            "body": {
+              "link": "http://someUrl.com/path/to/torrent"
+            }
           }
         },
         "name": "ubuntu-11.10-server-i386.iso",
-        "hash": "daa7d9348b5d289a58b91c98483b17417b266ff",
         "files": [
           { "title": "ubuntu-11.10-server-i386.iso", "bytes": 791323718 },
           { "title": "README", "bytes": 192 }
