@@ -2,13 +2,19 @@
 
 namespace FindDotTorrent\Feeds;
 
-class KickAssTorrents implements IFeed
+class KickAssTorrents extends BaseFeed implements IFeed
 {
-    protected $base_url = 'http://kat.ph/usearch/%s/?rss=1';
+    protected $url = 'http://kat.ph';
+    protected $base_search_url = 'http://kat.ph/usearch/%s/?rss=1';
 
-    public function getUrl($term)
+    public function getUrl()
     {
-        return sprintf($this->base_url, urlencode($term));
+        return $this->url;
+    }
+
+    public function makeSearchUrl($term)
+    {
+        return sprintf($this->base_search_url, urlencode($term));
     }
 
     public function fetchResults($response)

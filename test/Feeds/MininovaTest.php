@@ -2,15 +2,15 @@
 
 namespace Tests\Feeds;
 
-use \FindDotTorrent\Feeds\MiniNova;
+use \FindDotTorrent\Feeds\Mininova;
 
-class MiniNovaTest extends \PHPUnit_Framework_TestCase
+class MininovaTest extends \PHPUnit_Framework_TestCase
 {
     protected $feed;
 
     public function setUp()
     {
-        $this->feed = new MiniNova();
+        $this->feed = new Mininova();
     }
 
     public function urlProvider()
@@ -27,15 +27,30 @@ class MiniNovaTest extends \PHPUnit_Framework_TestCase
      */
     public function testGenerateUrls($term, $encoded_url)
     {
-        $this->assertEquals($encoded_url, $this->feed->getUrl($term));
+        $this->assertEquals($encoded_url, $this->feed->makeSearchUrl($term));
     }
 
     public function testFetchResults()
     {
-        $xml = file_get_contents('Fixtures/MiniNova/12-angry-men.xml');
+        $xml = file_get_contents('Fixtures/Mininova/12-angry-men.xml');
 
         $results = $this->feed->fetchResults($xml);
         $this->assertNotEmpty($results);
         $this->assertCount(2, $results);
+    }
+
+    public function testName()
+    {
+        $this->assertEquals('Mininova', $this->feed->getName());
+    }
+
+    public function testIdentifer()
+    {
+        $this->assertEquals('mininova', $this->feed->getIdentifier());
+    }
+
+    public function testUrl()
+    {
+        $this->assertEquals('http://mininova.org', $this->feed->getUrl());
     }
 }

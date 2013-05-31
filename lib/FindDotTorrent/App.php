@@ -2,8 +2,17 @@
 
 namespace FindDotTorrent;
 
+use \PDO as PDO;
+use \FindDotTorrent\HalHandler as HalHandler;
+use \FindDotTorrent\FeedHandler as FeedHandler;
+
 class App extends \Bullet\App
 {
+    /**
+     * @var \PDO
+     */
+    protected $db = null;
+
     public function __construct()
     {
         $dir_config = __DIR__ . '/../../src/config';
@@ -42,7 +51,21 @@ class App extends \Bullet\App
         );
 
         $this['HalHandler'] = function($app) {
-            return new \FindDotTorrent\HalHandler($app);
+            return new HalHandler($app);
         };
-   }
+    }
+
+    protected function getDb()
+    {
+        if (null === $this->db) {
+            $this->db = new PDO($this["db_dsn"], $this["db_username"], $this["db_password"]);
+        }
+
+        return $this->db;
+    }
+
+    public function getFeedHandler()
+    {
+        return new FeedHandler($this->getDb());
+    }
 }

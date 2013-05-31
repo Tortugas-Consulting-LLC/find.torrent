@@ -1,0 +1,5 @@
+CREATE TABLE feeds (
+    id VARCHAR(32) NOT NULL PRIMARY KEY,
+    enabled TINYINT(1) DEFAULT 1
+);
+

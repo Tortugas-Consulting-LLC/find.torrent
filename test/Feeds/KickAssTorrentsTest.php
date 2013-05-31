@@ -27,7 +27,7 @@ class KickAssTorrentsTest extends \PHPUnit_Framework_TestCase
      */
     public function testGenerateUrls($term, $encoded_url)
     {
-        $this->assertEquals($encoded_url, $this->feed->getUrl($term));
+        $this->assertEquals($encoded_url, $this->feed->makeSearchUrl($term));
     }
 
     public function testFetchResults()
@@ -37,5 +37,20 @@ class KickAssTorrentsTest extends \PHPUnit_Framework_TestCase
         $results = $this->feed->fetchResults($xml);
         $this->assertNotEmpty($results);
         $this->assertCount(25, $results);
+    }
+
+    public function testName()
+    {
+        $this->assertEquals('Kick Ass Torrents', $this->feed->getName());
+    }
+
+    public function testIdentifer()
+    {
+        $this->assertEquals('kickasstorrents', $this->feed->getIdentifier());
+    }
+
+    public function testUrl()
+    {
+        $this->assertEquals('http://kat.ph', $this->feed->getUrl());
     }
 }

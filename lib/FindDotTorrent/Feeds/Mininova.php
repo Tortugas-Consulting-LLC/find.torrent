@@ -2,13 +2,19 @@
 
 namespace FindDotTorrent\Feeds;
 
-class MiniNova implements IFeed
+class Mininova extends BaseFeed implements IFeed
 {
-    protected $base_url = 'http://mininova.org/rss/';
+    protected $url = 'http://mininova.org';
+    protected $base_search_url = 'http://mininova.org/rss/';
 
-    public function getUrl($term)
+    public function getUrl()
     {
-        return $this->base_url . urlencode($term);
+        return $this->url;
+    }
+
+    public function makeSearchUrl($term)
+    {
+        return $this->base_search_url . urlencode($term);
     }
 
     public function fetchResults($response)

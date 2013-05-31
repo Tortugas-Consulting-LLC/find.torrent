@@ -5,4 +5,9 @@ Find.Torrent Issue Tracker Of Awesome
  * Use this to get config values like $app->getConfig()->getWelcomeMessage()
 * Create feeds for different RSS services and have them return an array of SearchResult objects
 * Authentication
+* Define an installation procedure
+ * Detect an unconfigured or misconfigured install
+* Determine the response format based on HTTP headers instead of a configuration value
+* Handle 404 with a template
+* Need to frisby test the database?
 
