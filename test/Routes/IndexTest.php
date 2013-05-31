@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests;
+namespace Tests\Routes;
 
-class IndexTest extends BulletTestCase
+class IndexTest extends \Tests\BulletTestCase
 {
     protected $json;
 

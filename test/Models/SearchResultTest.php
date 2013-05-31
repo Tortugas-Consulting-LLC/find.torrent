@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Tests\Models;
 
 use \FindDotTorrent\Feeds\SearchResult;
 

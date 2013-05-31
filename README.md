@@ -25,7 +25,7 @@ API Documentation
 -----------------
 Documentation of the service can be found by browsing to /rels/.
 
-Responses are in either [application/hal+json or application/hal+xml](http://stateless.co/hal_specification.html)
+Responses are in either [application/hal+json or application/hal+xml](http://stateless.co/hal_specification.html) depending on your `config.ini`.
 
 ---
 

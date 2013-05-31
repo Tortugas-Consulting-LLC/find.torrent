@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Tests\Feeds;
 
 use \FindDotTorrent\Feeds\KickAssTorrents;
 
