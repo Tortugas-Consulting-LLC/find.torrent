@@ -30,7 +30,7 @@ class Mininova extends BaseFeed implements IFeed
             $result = new SearchResult();
             $result->setId($item->getElementsByTagName('guid')->item(0)->nodeValue)
                    ->setTitle($item->getElementsByTagName('title')->item(0)->nodeValue)
-                   ->setLink($item->getElementsByTagName('link')->item(0)->nodeValue);
+                   ->setLink($item->getElementsByTagName('enclosure')->item(0)->getAttribute('url'));
 
             $results[] = $result;
         }

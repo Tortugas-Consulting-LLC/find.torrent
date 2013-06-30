@@ -17,7 +17,7 @@ class FeedHandler
         $enabled_stmt = $this->db->prepare("SELECT enabled FROM feeds WHERE id = :id");
         foreach (glob(__DIR__ . "/Feeds/*.php") as $filename) {
             $feed_name = str_replace(".php", "", basename($filename));
-            if(in_array($feed_name, array('IFeed', 'BaseFeed', 'SearchResult'))) {
+            if(in_array($feed_name, array('IFeed', 'BaseFeed', 'Fetch', 'SearchResult'))) {
                 continue;
             }
             $feed_name = "\\FindDotTorrent\\Feeds\\{$feed_name}";

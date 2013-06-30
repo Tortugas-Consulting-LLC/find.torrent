@@ -10,4 +10,7 @@ Find.Torrent Issue Tracker Of Awesome
 * Determine the response format based on HTTP headers instead of a configuration value
 * Handle 404 with a template
 * Need to frisby test the database?
+* We still need to try to support file listings, and seeders and leechers.
+ * The format isn't the same for each, so pay attention to how we'll have to parse some of the things.
+ * The documentation is out of date with this, so we need to update this as well.
 
