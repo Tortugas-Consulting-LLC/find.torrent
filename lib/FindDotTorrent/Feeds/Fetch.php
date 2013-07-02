@@ -19,4 +19,18 @@ class Fetch
 
         return $feed->fetchResults($data);
     }
+
+    final public static function fetchTorrent($target)
+    {
+        $ch = curl_init($target);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_USERAGENT, 'find.torrent');
+
+        $data = curl_exec($ch);
+
+        curl_close($ch);
+
+        // This returns false on failure, or the number of bytes that were written.
+        file_put_contents('/Users/keelerm84/Sites/find.torrent/downloads/testing.torrent', $data);
+    }
 }
