@@ -5,7 +5,6 @@ $app->path('/', function($request) use($app) {
     $hal = new \Nocarrier\Hal('/', $data);
     $app['HalHandler']->addMyCurie($hal);
 
-    $hal->addLink('self', '/');
     $hal->addLink('ft:about', '/about/');
     $hal->addLink('ft:feeds', '/feeds/');
     $hal->addLink('ft:search', '/feeds/search/{?term}', array('templated' => true));

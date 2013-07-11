@@ -7,7 +7,6 @@ $app->path('feeds', function($request) use($app) {
             "enabled" => $feed->getEnabled()
         ));
         $app['HalHandler']->addMyCurie($feed_hal);
-        $feed_hal->addLink('self', '/feeds/' . $feed->getIdentifier());
 
         return $feed_hal;
     };
@@ -34,7 +33,6 @@ $app->path('feeds', function($request) use($app) {
     $hal = new \Nocarrier\Hal('/feeds/');
     $app['HalHandler']->addMyCurie($hal);
 
-    $hal->addLink('self', '/feeds/');
     $hal->addLink('ft:home', '/');
     $hal->addLink('ft:search', '/feeds/search/{?term}', array('templated' => true));
 

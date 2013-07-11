@@ -10,7 +10,6 @@ $app->path('about', function($request) use($app) {
 
     $app['HalHandler']->addMyCurie($hal);
 
-    $hal->addLink('self', '/about/');
     $hal->addLink('ft:home', '/');
 
     return $hal;
