@@ -1,17 +1,16 @@
 ## GET
 A found torrent. Contains information about a found torrent and the link to trigger its download.
 ### Responses
->### 200 OK
->State:
+>#### Required Properties
+>* **title**: String
+  * The descriptive name of the torrent
+>* **target**: String
+  * The URL where the torrent file can be downloaded.  This is used in conjuction with [ft:download](/rels/download)
+#### Example
 >~~~ json
 >{
->  "name": "The name of the torrent.",
->  "hash": "The unique hash that identifies the torrent.",
->  "seeders": "The reported number of seeders represented as an integer.",
->  "leachers": "The reported number of leachers represented as an integer.",
->  "files": [
->    { "title" : "The title of one of the files in this torrent", "bytes" : "The size of this file represented as an integer number of bytes" }
->  ]
+>  "title": "Dave - King of the trowsers - 128kbps plus covers - ANGRY GENTLEMEN RECORDS",
+>  "target": "http://www.mininova.org/get/2461403",
 >}
 >~~~
 >Links:
