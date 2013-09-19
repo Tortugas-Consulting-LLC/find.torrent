@@ -2,10 +2,15 @@
 The root of the find.torrent service. Start here to browse the API.
 ### Responses
 >### 200 OK
->State:
+>Required Properties:
+>
+>* **welcome**: string
+  * A configurable welcome message from the host of this service.
+>
+>Example:
 >~~~ json
 >{
->  "welcome": "A configurable welcome message from the host of this service."
+>  "welcome": "Welcome to the find.torrent service!"
 >}
 >~~~
 >Links:

@@ -34,7 +34,7 @@ $app->path('feeds', function($request) use($app) {
     $app['HalHandler']->addMyCurie($hal);
 
     $hal->addLink('ft:home', '/');
-    $hal->addLink('ft:search', '/feeds/search/{?term}', array('templated' => true));
+    $hal->addLink('ft:search', '/search/{?term}', array('templated' => true));
 
     foreach($app->getFeedHandler()->findAll() as $feed) {
         $hal->addResource('ft:feed', $make_feed_hal($feed));

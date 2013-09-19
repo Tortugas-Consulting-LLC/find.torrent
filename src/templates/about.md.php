@@ -1,13 +1,22 @@
 ## GET
-Provide information about the find.torrent service
+Provides information about the find.torrent service.
 ### Responses
 >### 200 OK
->State:
+>Required Properties:
+>
+>* **service**: string
+  * The awesome name of this service.,
+>* **about**: string
+  * A helpful message about this service.,
+>* **version**: string
+  * The version number of the installed service.
+>
+>Example:
 >~~~ json
 >{
->  "service": "The awesome name of this service.",
->  "about": "A helpful message about this service.",
->  "version": "The version number of the installed service."
+>  "service": "find.torrent",
+>  "about": "This service is brought to you by the letters F and T",
+>  "version": "1.2.3"
 >}
 >~~~
 >Links:

@@ -7,7 +7,7 @@ $app->path('/', function($request) use($app) {
 
     $hal->addLink('ft:about', '/about/');
     $hal->addLink('ft:feeds', '/feeds/');
-    $hal->addLink('ft:search', '/feeds/search/{?term}', array('templated' => true));
+    $hal->addLink('ft:search', '/search/{?term}', array('templated' => true));
 
     return $hal;
 });

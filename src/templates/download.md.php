@@ -2,10 +2,12 @@
 Triggers find.torrent to download a specific [ft:torrent](/rels/torrent).
 ### Request
 >### Body
->#### Required Properties
+>Required Properties:
+>
 >* **target**: string
   * The url of the torrent, as retrieved through [ft:search](/rels/search)
->#### Example
+>
+>Example;
 >~~~ json
 >{
 >  "target": "http://www.mininova.org/get/2461403"
@@ -14,13 +16,14 @@ Triggers find.torrent to download a specific [ft:torrent](/rels/torrent).
 
 ### Responses
 >### 200 OK
->#### Required Properties
+>Required Properties:
+>
 >* **path**: string
   * The path to the torrent that was successfully downloaded
->#### Example:
+>
+>Example:
 >~~~ json
 >{
 >  "path": "/var/www/find.torrent/downloads/1203120948.3048234234089.torrent",
 >}
 >~~~
->### 500 INTERNAL SERVER ERROR

@@ -4,9 +4,6 @@ Instructs find.torrent to parse enabled feeds for torrents matching search crite
 >### 200 OK
 >Links:
 >
+>* [ft:torrent](/rels/torrent) An array of search results.
 >* [ft:home](/rels/home) The root URI of find.torrent.
 >* [ft:feeds](/rels/feeds) The different RSS feeds parsed by this service.
->
->Embedded Resources:
->
->* [ft:torrent](/rels/torrent) An array of search results.
