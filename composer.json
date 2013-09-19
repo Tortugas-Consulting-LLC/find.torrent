@@ -2,7 +2,8 @@
   "require": {
     "vlucas/bulletphp": "*",
     "nocarrier/hal": "*",
-    "michelf/php-markdown": "*"
+    "michelf/php-markdown": "*",
+    "symfony/console": "*"
   },
   "minimum-stability": "dev",
   "autoload": {

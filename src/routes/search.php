@@ -1,5 +1,7 @@
 <?php
 $app->path('/search', function($request) use($app) {
+    $app->filter('authenticate');
+
     $app->param('slug', function ($request, $term) use ($app) {
         $results = array();
         $hal = new \Nocarrier\Hal('/search');

@@ -1,6 +1,5 @@
 <?php
 $app->path('/rels/', function($request) use($app) {
-
     // Helper closure so I don't have to repeat myself
     $makeTemplate = function($rel) use ($app) {
         return $app->template($rel)

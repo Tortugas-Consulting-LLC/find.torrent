@@ -38,7 +38,7 @@ class FeedHandler
         return $feeds;
     }
 
-    public function findBy($id)
+    public function find($id)
     {
         foreach($this->findAll() as $feed) {
             if ($feed->getIdentifier() == $id) {

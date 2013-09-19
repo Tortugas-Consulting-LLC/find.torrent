@@ -1,5 +1,7 @@
 <?php
 $app->path('feeds', function($request) use($app) {
+    $app->filter('authenticate');
+
     $make_feed_hal = function($feed) use($app) {
         $feed_hal = new \Nocarrier\Hal('/feeds/' . $feed->getIdentifier(), array(
             "name"    => $feed->getName(),
@@ -13,7 +15,7 @@ $app->path('feeds', function($request) use($app) {
 
     // When specifying a particular feed handle GET and PUT
     $app->param('slug', function($request, $feed_id) use ($app, $make_feed_hal) {
-        $feed = $app->getFeedHandler()->findBy($feed_id);
+        $feed = $app->getFeedHandler()->find($feed_id);
         if (false === $feed) {
             return $app->response(404, "Feed {$feed_id} not found.");
         }

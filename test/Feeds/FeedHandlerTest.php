@@ -25,11 +25,11 @@ class FeedHandlertest extends BulletTestCase
 
     public function testICanGetASpecificTypeOfFeedFromTheFeedHandler()
     {
-        $this->assertInstanceOf('\FindDotTorrent\Feeds\KickAssTorrents', $this->handler->findBy('kickasstorrents'));
+        $this->assertInstanceOf('\FindDotTorrent\Feeds\KickAssTorrents', $this->handler->find('kickasstorrents'));
     }
 
     public function testExpectedFailureWhenIAskTheFeedHandlerForABogusFeed()
     {
-        $this->assertFalse($this->handler->findBy('foobartorrents'));
+        $this->assertFalse($this->handler->find('foobartorrents'));
     }
 }

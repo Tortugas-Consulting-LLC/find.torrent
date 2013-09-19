@@ -3,16 +3,12 @@
 namespace FindDotTorrent;
 
 use \PDO as PDO;
+use \Bullet\Request as Request;
 use \FindDotTorrent\HalHandler as HalHandler;
 use \FindDotTorrent\FeedHandler as FeedHandler;
 
 class App extends \Bullet\App
 {
-    /**
-     * @var \PDO
-     */
-    protected $db = null;
-
     public function __construct()
     {
         $dir_config = __DIR__ . '/../../src/config';
@@ -36,9 +32,11 @@ class App extends \Bullet\App
         }
 
         $this->registerResponseHandler(
+            // Condition check
             function($response) {
                 return $response->content() instanceof \NoCarrier\Hal;
             },
+            // Response modifier
             function($response) use($app) {
                 if ('xml' === strtolower($app['response_format'])) {
                     $response->content($response->content()->asXml());
@@ -50,22 +48,58 @@ class App extends \Bullet\App
             }
         );
 
+        $this['db'] = $this->share(function($app) {
+            return new PDO($app["db_dsn"], $app["db_username"], $app["db_password"]);
+        });
+
         $this['HalHandler'] = function($app) {
             return new HalHandler($app);
         };
+
+        $this['FeedHandler'] = function($app) {
+            return new FeedHandler($app['db']);
+        };
+
+        $this['KeyHandler'] = function($app) {
+            return new KeyHandler($app['db']);
+        };
     }
 
-    protected function getDb()
+    /**
+     * Parses a request and determines if it is authenticated.
+     *
+     * Returns boolean true on success or a string error message on failure
+     */
+    public function requestIsAuthenticated(Request $request)
     {
-        if (null === $this->db) {
-            $this->db = new PDO($this["db_dsn"], $this["db_username"], $this["db_password"]);
+        // Look for public key, content hash, and request timestamp headers.
+        $public_key = $request->header("X-Public-Key");
+        if (false === $public_key) {
+            return "Missing required \"X-Public-Key\" header.";
+        }
+        $content_hash = $request->header("X-Content-Hash");
+        if (false === $content_hash) {
+            return "Missing required \"X-Content-Hash\" header.";
+        }
+        $request_timestamp = $request->header("X-Request-Timestamp");
+        if (false === $request_timestamp) {
+            return "Missing required \"X-Request-Timestamp\" header.";
         }
 
-        return $this->db;
-    }
+        // Identify API private key based on public key.
+        $key_store = $this["KeyHandler"]->findByPublicKey($public_key);
+        if (false === $key_store) {
+            return "Unable to authenticate provided X-Public-Key";
+        }
 
-    public function getFeedHandler()
-    {
-        return new FeedHandler($this->getDb());
+        // Ensure that the hash of public key, request timestamp and optionally
+        // the request body match the provided content hash.
+        $hash_basis = $public_key . $request_timestamp . $request->raw();
+
+        if (hash_hmac("sha256", $hash_basis, $key_store->getPrivateKey()) != $content_hash) {
+            return "Provided content hash did not match expected value.";
+        }
+
+        return true;
     }
 }

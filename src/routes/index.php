@@ -1,5 +1,7 @@
 <?php
 $app->path('/', function($request) use($app) {
+    $app->filter('authenticate');
+
     $data = array('welcome' => $app['welcome_msg']);
 
     $hal = new \Nocarrier\Hal('/', $data);
