@@ -15,7 +15,7 @@ Installation
 1. Clone this repo
 2. Install dependencies
     * Run `php composer.phar install`
-3. Create a database with the schema file
+3. Create a database with the schema file at `db/install.sql`
 
 Configuration
 -------------
