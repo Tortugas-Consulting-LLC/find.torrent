@@ -13,7 +13,8 @@ class FeedHandlertest extends BulletTestCase
     {
         parent::setup();
 
-        $this->handler = $this->getApp()->getFeedHandler();
+        $app = $this->getApp();
+        $this->handler = $app['FeedHandler'];
     }
 
     public function testFeedHandlerFindAllReturnsMeOnlyFeedObjects()

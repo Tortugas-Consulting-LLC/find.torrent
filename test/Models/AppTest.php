@@ -6,6 +6,7 @@ class AppTest extends \Tests\BulletTestCase
 {
     public function testAppCanGiveMeAFeedHandler()
     {
-        $this->assertInstanceOf('\FindDotTorrent\FeedHandler', $this->getApp()->getFeedHandler());
+        $app = $this->getApp();
+        $this->assertInstanceOf('\FindDotTorrent\FeedHandler', $app['FeedHandler']);
     }
 }

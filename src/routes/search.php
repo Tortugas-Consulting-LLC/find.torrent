@@ -6,7 +6,7 @@ $app->path('/search', function($request) use($app) {
         $results = array();
         $hal = new \Nocarrier\Hal('/search');
 
-        foreach($app->getFeedHandler()->findAll() as $feed) {
+        foreach($app['FeedHandler']->findAll() as $feed) {
             $feed_results = \FindDotTorrent\Feeds\Fetch::fetchResults($term, $feed);
             foreach($feed_results as $result) {
                 $hal->addLink('ft:torrent', '/download/', array(

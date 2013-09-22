@@ -15,14 +15,14 @@ $app->path('feeds', function($request) use($app) {
 
     // When specifying a particular feed handle GET and PUT
     $app->param('slug', function($request, $feed_id) use ($app, $make_feed_hal) {
-        $feed = $app->getFeedHandler()->find($feed_id);
+        $feed = $app['FeedHandler']->find($feed_id);
         if (false === $feed) {
             return $app->response(404, "Feed {$feed_id} not found.");
         }
 
         $app->put(function($request) use($app, $feed, $make_feed_hal) {
             $feed->setEnabled($request->get("enabled"));
-            $app->getFeedHandler()->persist($feed);
+            $app['FeedHandler']->persist($feed);
             return $make_feed_hal($feed);
         });
 
@@ -38,7 +38,7 @@ $app->path('feeds', function($request) use($app) {
     $hal->addLink('ft:home', '/');
     $hal->addLink('ft:search', '/search/{?term}', array('templated' => true));
 
-    foreach($app->getFeedHandler()->findAll() as $feed) {
+    foreach($app['FeedHandler']->findAll() as $feed) {
         $hal->addResource('ft:feed', $make_feed_hal($feed));
     }
 
