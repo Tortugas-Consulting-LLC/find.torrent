@@ -3,3 +3,5 @@ composer.lock
 src/config/config.ini
 tags
 db/find.torrent.db
+client.php
+composer.phar
