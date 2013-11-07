@@ -92,20 +92,9 @@ class App extends \Bullet\App
             return "Unable to authenticate provided X-Public-Key";
         }
 
-        if (0 == strlen($request->raw())) {
-            $raw = '';
-        } else if ('xml' === strtolower($this['response_format'])) {
-            $raw = $request->raw();
-        } else {
-            $params = array();
-            parse_str($request->raw(), $params);
-
-            $raw = json_encode($params, JSON_UNESCAPED_SLASHES);
-        }
-
         // Ensure that the hash of public key, request timestamp and optionally
         // the request body match the provided content hash.
-        $hash_basis = $public_key . $request_timestamp . $raw;
+        $hash_basis = $public_key . $request_timestamp . $request->raw();
 
         if (hash_hmac("sha256", $hash_basis, $key_store->getPrivateKey()) != $content_hash) {
             return "Provided content hash did not match expected value.";

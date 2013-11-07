@@ -22,18 +22,14 @@ class Fetch
 
     final public static function fetchTorrent($target, $download_path)
     {
-        $request = curl_init($target);
-        curl_setopt($request, CURLOPT_ENCODING, "gzip");
-        curl_setopt($request, CURLOPT_FOLLOWLOCATION, 1);
-        curl_setopt($request, CURLOPT_HEADER, 0);
-        curl_setopt($request, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($request, CURLOPT_URL, $target);
-        curl_setopt($request, CURLOPT_USERAGENT, 'find.torrent');
+        $ch = curl_init($target);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_USERAGENT, 'find.torrent');
 
-        $data = curl_exec($request);
-        $httpCode = curl_getinfo($request, CURLINFO_HTTP_CODE);
+        $data = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
-        curl_close($request);
+        curl_close($ch);
 
         if ( 200 != $httpCode ) {
             return false;
