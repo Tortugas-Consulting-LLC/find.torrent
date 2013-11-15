@@ -7,6 +7,7 @@ class SearchResult
     protected $id;
     protected $title;
     protected $link;
+    protected $source;
 
     public function setId($id)
     {
@@ -42,5 +43,17 @@ class SearchResult
     public function getLink()
     {
         return $this->link;
+    }
+
+    public function setSource($source)
+    {
+        $this->source = $source;
+
+        return $this;
+    }
+
+    public function getSource()
+    {
+        return $this->source;
     }
 }

@@ -11,7 +11,8 @@ $app->path('/search', function($request) use($app) {
             foreach($feed_results as $result) {
                 $hal->addLink('ft:torrent', '/download/', array(
                     'title' => $result->getTitle(),
-                    'target' => $result->getLink()
+                    'target' => $result->getLink(),
+                    'source' => $result->getSource()
                 ));
             }
         }
