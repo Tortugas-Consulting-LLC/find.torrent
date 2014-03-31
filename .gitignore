@@ -1,5 +1,5 @@
 vendor/*
-src/config/config.ini
+app/config/config.ini
 tags
 db/find.torrent.db
 client.php

@@ -11,14 +11,14 @@ class App extends \Bullet\App
 {
     public function __construct()
     {
-        $dir_config = __DIR__ . '/../../src/config';
-        $dir_routes = __DIR__ . '/../../src/routes';
+        $dir_config = __DIR__ . '/../../app/config';
+        $dir_routes = __DIR__ . '/../../app/routes';
 
         $config = parse_ini_file($dir_config .'/config.ini');
 
         $config['template.cfg'] = array(
-                'path' => __DIR__ . '/../../src/templates/',
-                'path_layouts' => __DIR__ . '/../../src/templates/layouts/'
+                'path' => __DIR__ . '/../../app/templates/',
+                'path_layouts' => __DIR__ . '/../../app/templates/layouts/'
             );
 
         parent::__construct($config);

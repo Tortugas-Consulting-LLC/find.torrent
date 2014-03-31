@@ -1,4 +1,4 @@
-![find.torrent](assets/img/logo-180.png)
+![find.torrent](web/assets/img/logo-180.png)
 
 find.torrent
 ===========
@@ -75,4 +75,4 @@ if (200 == $status) {
 print PHP_EOL;
 ~~~
 
-API keys can be reviewed / deleted through the console interface. Run `php -f src/console.php list` to get a summary of the available commands.
+API keys can be reviewed / deleted through the console interface. Run `php -f app/console.php list` to get a summary of the available commands.

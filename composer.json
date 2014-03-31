@@ -10,6 +10,6 @@
   },
   "minimum-stability": "dev",
   "autoload": {
-    "psr-0": {"FindDotTorrent": "lib/"}
+    "psr-0": {"FindDotTorrent": "src/"}
   }
 }
