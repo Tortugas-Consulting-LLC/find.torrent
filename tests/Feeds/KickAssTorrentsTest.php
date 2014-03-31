@@ -16,9 +16,9 @@ class KickAssTorrentsTest extends \PHPUnit_Framework_TestCase
     public function urlProvider()
     {
         return array(
-            array('12 Angry Men', 'http://kat.ph/usearch/12+Angry+Men/?rss=1'),
-            array('Law & Order', 'http://kat.ph/usearch/Law+%26+Order/?rss=1'),
-            array("Gideon's Trumpet", 'http://kat.ph/usearch/Gideon%27s+Trumpet/?rss=1')
+            array('12 Angry Men', 'http://kickass.to/usearch/12%20Angry%20Men/?rss=1'),
+            array('Law & Order', 'http://kickass.to/usearch/Law%20%26%20Order/?rss=1'),
+            array("Gideon's Trumpet", 'http://kickass.to/usearch/Gideon%27s%20Trumpet/?rss=1')
         );
     }
 
@@ -32,7 +32,7 @@ class KickAssTorrentsTest extends \PHPUnit_Framework_TestCase
 
     public function testFetchResults()
     {
-        $xml = file_get_contents('Fixtures/KickAssTorrents/12-angry-men.xml');
+        $xml = file_get_contents(__DIR__ . '/../Fixtures/KickAssTorrents/12-angry-men.xml');
 
         $results = $this->feed->fetchResults($xml);
         $this->assertNotEmpty($results);

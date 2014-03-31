@@ -32,7 +32,7 @@ class MininovaTest extends \PHPUnit_Framework_TestCase
 
     public function testFetchResults()
     {
-        $xml = file_get_contents('Fixtures/Mininova/12-angry-men.xml');
+        $xml = file_get_contents(__DIR__ . '/../Fixtures/Mininova/12-angry-men.xml');
 
         $results = $this->feed->fetchResults($xml);
         $this->assertNotEmpty($results);

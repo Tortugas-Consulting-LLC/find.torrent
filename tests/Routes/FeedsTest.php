@@ -2,13 +2,13 @@
 
 namespace Tests\Routes;
 
-class IndexTest extends \Tests\BulletTestCase
+class FeedsTest extends \Tests\BulletTestCase
 {
     protected $json;
 
     public function setup()
     {
-        $request = new \Bullet\Request('GET', '/');
+        $request = new \Bullet\Request('GET', '/feeds/');
         $response = $this->getApp()->run($request);
         $this->json = json_decode($response->content());
     }
@@ -21,10 +21,9 @@ class IndexTest extends \Tests\BulletTestCase
     public function linksProvider()
     {
         return array(
-            array('self',    '/'),
-            array('ft:about',   '/about/'),
-            array('ft:feeds',   '/feeds/'),
-            array('ft:search',  '/feeds/search/{?term}'),
+            array('self', '/feeds/'),
+            array('ft:home', '/'),
+            array('ft:search', '/search/{?term}')
         );
     }
 
@@ -37,16 +36,14 @@ class IndexTest extends \Tests\BulletTestCase
         $this->assertEquals($href, $this->json->_links->{$link}->href);
     }
 
-    public function testSearchIsMarkedAsTemplated()
+    public function testSearchNavigationLinkIsTemplated()
     {
-        $this->assertTrue(isset($this->json->_links->{'ft:search'}->templated));
-        $this->assertEquals(true, $this->json->_links->{'ft:search'}->templated);
+        $this->assertTrue($this->json->_links->{"ft:search"}->templated);
     }
 
-    public function testWelcomeMessage()
+    public function testFeedsAreEmbedded()
     {
-        $this->assertTrue(isset($this->json->welcome));
-        $this->assertEquals($this->getApp()->offsetGet('welcome_msg'), $this->json->welcome);
+        $this->assertTrue(isset($this->json->_embedded->{"ft:feed"}));
     }
 }
 
