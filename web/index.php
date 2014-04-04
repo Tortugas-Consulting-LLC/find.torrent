@@ -2,6 +2,9 @@
 
 require __DIR__ . "/../vendor/autoload.php";
 
+// Capture request immediately to preserve raw input from php://input
+$request = new \Bullet\Request();
+
 $app = new FindDotTorrent\App();
 
 $app->on("authenticate", function($request, $response) use ($app) {
@@ -15,4 +18,4 @@ $app->on("Exception", function($request, $response, $exception) {
     print $exception->getMessage();
 });
 
-echo $app->run(new Bullet\Request());
+echo $app->run($request);
