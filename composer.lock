@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "fde9c81a2e792cbd4443dd08b922b5ca",
+    "hash": "388eb16b13b8e6488fe9918b933dfce6",
     "packages": [
         {
             "name": "michelf/php-markdown",
@@ -172,12 +172,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "ab9359cbf100259625c756b57c578eea15b3c464"
+                "reference": "abfdf388c2f47c4d4ba721afab7e91f15ffa476f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/ab9359cbf100259625c756b57c578eea15b3c464",
-                "reference": "ab9359cbf100259625c756b57c578eea15b3c464",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/abfdf388c2f47c4d4ba721afab7e91f15ffa476f",
+                "reference": "abfdf388c2f47c4d4ba721afab7e91f15ffa476f",
                 "shasum": ""
             },
             "require": {
@@ -220,7 +220,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2014-03-19 15:49:37"
+            "time": "2014-04-02 16:54:39"
         },
         {
             "name": "vlucas/bulletphp",
@@ -277,12 +277,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "3dcca2120451b98a98fe60221ca279a184ee64db"
+                "reference": "aef655b2481c7ef8c8b73288c383261b2bb7e2a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/3dcca2120451b98a98fe60221ca279a184ee64db",
-                "reference": "3dcca2120451b98a98fe60221ca279a184ee64db",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/aef655b2481c7ef8c8b73288c383261b2bb7e2a2",
+                "reference": "aef655b2481c7ef8c8b73288c383261b2bb7e2a2",
                 "shasum": ""
             },
             "require": {
@@ -333,7 +333,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-03-28 10:54:55"
+            "time": "2014-04-03 03:26:47"
         },
         {
             "name": "phpunit/php-file-iterator",
