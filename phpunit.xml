@@ -1,0 +1,11 @@
+<phpunit
+    colors="true"
+    convertErrorsToExceptions="true"
+    convertNoticesToExceptions="true"
+    convertWarningsToExceptions="true">
+  <testsuites>
+    <testsuite name="Find.Torrent Unit Tests">
+      <directory suffix=".php">./tests</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>

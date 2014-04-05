@@ -1,0 +1,18 @@
+{
+    "name": "tortugas/find.torrent",
+    "description": "A simple service for finding and download torrents",
+    "require": {
+        "silex/silex": "~1.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.0.14"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matthew M. Keeler",
+            "email": "keelerm84@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
