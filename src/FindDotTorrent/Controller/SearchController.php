@@ -36,10 +36,9 @@ class SearchController
     {
         $feeds = $this->repo->getEnabled();
 
-        $items = array();
-        foreach ($feeds as $feed) {
-            $items = array_merge($items, $feed->search($term));
-        }
+        $items = array_reduce($feeds, function ($items, $feed) use ($term) {
+            return array_merge($items, $feed->search($term));
+        }, array());
 
         return new JsonResponse($items);
     }
