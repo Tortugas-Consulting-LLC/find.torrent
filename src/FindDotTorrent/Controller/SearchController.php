@@ -2,7 +2,7 @@
 
 namespace FindDotTorrent\Controller;
 
-use FindDotTorrent\Feed\Factory;
+use FindDotTorrent\Repository\Feeds;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
@@ -14,16 +14,16 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class SearchController
 {
     /**
-     * @var Factory
+     * @var Feeds
      */
-    protected $factory;
+    protected $repo;
 
     /**
-     * @param Factory $factory
+     * @param Feeds $repo
      */
-    public function __construct(Factory $factory)
+    public function __construct(Feeds $repo)
     {
-        $this->factory = $factory;
+        $this->repo = $repo;
     }
 
     /**
@@ -32,11 +32,9 @@ class SearchController
      * @param string $term
      * @return JsonResponse
      */
-    public function allAction($term)
+    public function all($term)
     {
-        $feeds = array();
-        $feeds[] = $this->factory->build('KickAss');
-        $feeds[] = $this->factory->build('Mininova');
+        $feeds = $this->repo->getEnabled();
 
         $items = array();
         foreach ($feeds as $feed) {
@@ -44,5 +42,24 @@ class SearchController
         }
 
         return new JsonResponse($items);
+    }
+
+    /**
+     * This method allows searching for a given term within the specified feed
+     *
+     * @param string $feed
+     * @param string $term
+     * @return JsonResponse
+     */
+    public function one($feed, $term)
+    {
+        $feed = $this->repo->get($feed);
+
+        if (false === $feed) {
+            return new JsonResponse(array('error' => 'The requested feed does not exist'), 400);
+        }
+
+        return new JsonResponse($feed->search($term));
+
     }
 }

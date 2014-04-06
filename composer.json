@@ -3,7 +3,8 @@
     "description": "A simple service for finding and download torrents",
     "require": {
         "silex/silex": "~1.2",
-        "guzzlehttp/guzzle": "~4.0"
+        "guzzlehttp/guzzle": "~4.0",
+        "doctrine/dbal": "2.4.2"
     },
     "require-dev": {
         "phing/phing": "2.7.0",
