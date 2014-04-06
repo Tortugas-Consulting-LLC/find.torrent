@@ -4,6 +4,7 @@ namespace FindDotTorrent\Repository;
 
 use Doctrine\DBAL\Connection;
 use FindDotTorrent\Feed\Factory;
+use FindDotTorrent\Feed;
 
 class Feeds
 {
@@ -75,7 +76,28 @@ class Feeds
         return $this->getFeeds(array($label))[0];
     }
 
-    public function getFeeds($labels)
+    /**
+     * Set the status of the specified feed
+     *
+     * @param Feed $feed The feed to set the status on
+     * @param bool $enabled A boolean to represent that status of the feed
+     */
+    public function setStatus(Feed $feed, $enabled)
+    {
+        $this->db->update(
+            'feeds',
+            array('enabled' => (bool) $enabled),
+            array('label' => $feed->getLabel())
+        );
+    }
+
+    /**
+     * A helper method that transforms a list of feed labels into Feed objects
+     *
+     * @param array $labels
+     * @return array An array of Feed objects
+     */
+    protected function getFeeds($labels)
     {
         return array_map(function ($label) {
             return $this->factory->build($label);
