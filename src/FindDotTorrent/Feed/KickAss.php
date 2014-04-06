@@ -5,7 +5,7 @@ namespace FindDotTorrent\Feed;
 use FindDotTorrent\Client;
 use FindDotTorrent\Translator;
 
-class KickAss implements Feed
+class KickAss implements \FindDotTorrent\Feed
 {
     protected $client;
     protected $translator;

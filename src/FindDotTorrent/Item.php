@@ -2,7 +2,7 @@
 
 namespace FindDotTorrent;
 
-class Item
+class Item implements \JsonSerializable
 {
     protected $title;
     protected $link;
@@ -38,5 +38,14 @@ class Item
     public function getLabel()
     {
         return $this->label;
+    }
+
+    public function jsonSerialize()
+    {
+        return array(
+            'title' => $this->title,
+            'link' => $this->link,
+            'label' => $this->label
+        );
     }
 }

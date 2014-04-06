@@ -5,7 +5,7 @@ namespace FindDotTorrent\Feed;
 use FindDotTorrent\Client;
 use FindDotTorrent\Translator;
 
-class Mininova implements Feed
+class Mininova implements \FindDotTorrent\Feed
 {
     protected $client;
     protected $translator;

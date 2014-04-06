@@ -8,12 +8,12 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
 
         $kickass = $factory->build('KickAss');
 
-        $this->assertInstanceOf('\FindDotTorrent\Feed\Feed', $kickass);
+        $this->assertInstanceOf('\FindDotTorrent\Feed', $kickass);
         $this->assertInstanceOf('\FindDotTorrent\Feed\KickAss', $kickass);
 
         $mininova = $factory->build('Mininova');
 
-        $this->assertInstanceOf('\FindDotTorrent\Feed\Feed', $mininova);
+        $this->assertInstanceOf('\FindDotTorrent\Feed', $mininova);
         $this->assertInstanceOf('\FindDotTorrent\Feed\Mininova', $mininova);
 
         try {
