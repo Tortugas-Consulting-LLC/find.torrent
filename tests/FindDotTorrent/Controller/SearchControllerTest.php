@@ -2,19 +2,25 @@
 
 class SearchControllerTest extends \PHPUnit_Framework_TestCase
 {
+    protected $repo;
+
+    public function setUp()
+    {
+        $this->repo = $this->getMockBuilder('\FindDotTorrent\Repository\Feeds')
+                           ->disableOriginalConstructor()
+                           ->getMock();
+    }
+
     public function testCanSearchAll()
     {
         $kaFeed = $this->getMockFeed('Kick Ass', 'http://kickass.to', 'Kick Ass');
         $miniFeed = $this->getMockFeed('Mininova', 'http://mininova.org', 'Mininova');
 
-        $repo = $this->getMockBuilder('\FindDotTorrent\Repository\Feeds')
-                     ->disableOriginalConstructor()
-                     ->getMock();
-        $repo->expects($this->once())
-             ->method('getEnabled')
-             ->will($this->returnValue(array($kaFeed, $miniFeed)));
+        $this->repo->expects($this->once())
+                   ->method('getEnabled')
+                   ->will($this->returnValue(array($kaFeed, $miniFeed)));
 
-        $controller = new \FindDotTorrent\Controller\SearchController($repo);
+        $controller = new \FindDotTorrent\Controller\SearchController($this->repo);
 
         $response = $controller->all('12 Angry Men');
 
@@ -26,15 +32,12 @@ class SearchControllerTest extends \PHPUnit_Framework_TestCase
     {
         $feed = $this->getMockFeed('Kick Ass', 'http://kickass.to', 'Kick Ass');
 
-        $repo = $this->getMockBuilder('\FindDotTorrent\Repository\Feeds')
-                     ->disableOriginalConstructor()
-                     ->getMock();
-        $repo->expects($this->once())
-             ->method('get')
-             ->with('KickAss')
-             ->will($this->returnValue($feed));
+        $this->repo->expects($this->once())
+                   ->method('get')
+                   ->with('KickAss')
+                   ->will($this->returnValue($feed));
 
-        $controller = new \FindDotTorrent\Controller\SearchController($repo);
+        $controller = new \FindDotTorrent\Controller\SearchController($this->repo);
 
         $response = $controller->one('KickAss', '12 Angry Men');
 
@@ -44,15 +47,12 @@ class SearchControllerTest extends \PHPUnit_Framework_TestCase
 
     public function testNonExistentFeedSearchFails()
     {
-        $repo = $this->getMockBuilder('\FindDotTorrent\Repository\Feeds')
-                     ->disableOriginalConstructor()
-                     ->getMock();
-        $repo->expects($this->once())
-             ->method('get')
-             ->with('non-existent-feed')
-             ->will($this->returnValue(false));
+        $this->repo->expects($this->once())
+                   ->method('get')
+                   ->with('non-existent-feed')
+                   ->will($this->returnValue(false));
 
-        $controller = new \FindDotTorrent\Controller\SearchController($repo);
+        $controller = new \FindDotTorrent\Controller\SearchController($this->repo);
 
         $response = $controller->one('non-existent-feed', '12 Angry Men');
 
@@ -67,8 +67,8 @@ class SearchControllerTest extends \PHPUnit_Framework_TestCase
 
         $feed = $this->getMock('\FindDotTorrent\Feed');
         $feed->expects($this->once())
-               ->method('search')
-               ->will($this->returnValue(array($item)));
+             ->method('search')
+             ->will($this->returnValue(array($item)));
 
         return $feed;
     }
