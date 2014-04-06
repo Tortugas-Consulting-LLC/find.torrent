@@ -17,6 +17,7 @@ class SearchControllerTest extends \PHPUnit_Framework_TestCase
         $response = $controller->allAction('12 Angry Men');
 
         $this->assertInstanceOf('Symfony\Component\HttpFoundation\JsonResponse', $response);
+        $this->assertEquals(200, $response->getStatusCode());
     }
 
     protected function getMockFeed($title, $link, $label)

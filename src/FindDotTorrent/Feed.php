@@ -9,7 +9,9 @@ namespace FindDotTorrent;
 interface Feed
 {
     /**
-     * @param string $term The term to search for
+     * Perform a search for a specific term
+     *
+     * @param string $term The search term
      * @return array An array of Item objects
      */
     public function search($term);

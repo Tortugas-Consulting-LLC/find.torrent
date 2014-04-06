@@ -1,12 +1,18 @@
 <phpunit
-    bootstrap="./tests/bootstrap.php"
+    bootstrap="../../tests/bootstrap.php"
     colors="false"
     convertErrorsToExceptions="true"
     convertNoticesToExceptions="true"
     convertWarningsToExceptions="true">
+  <filter>
+    <blacklist>
+      <directory>../../vendor</directory>
+    </blacklist>
+  </filter>
+
   <testsuites>
     <testsuite name="Find.Torrent Unit Tests">
-      <directory suffix=".php">./tests</directory>
+      <directory suffix=".php">../../tests</directory>
     </testsuite>
   </testsuites>
 </phpunit>

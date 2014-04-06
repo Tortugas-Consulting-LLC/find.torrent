@@ -6,7 +6,12 @@
         "guzzlehttp/guzzle": "~4.0"
     },
     "require-dev": {
+        "phing/phing": "2.7.0",
+        "phpdocumentor/phpdocumentor": "v2.4.0",
         "phpunit/phpunit": "4.0.14"
+    },
+    "config": {
+      "bin-dir": "app/bin"
     },
     "license": "MIT",
     "authors": [

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="FindDotTorrent" default="build" basedir=".">
+  <target name="build" description="Generates all supporting files / documents">
+    <phingcall target="clean" />
+    <phingcall target="coverage" />
+    <phingcall target="doc" />
+  </target>
+
+  <target name="clean" description="Remove all files and directories that can be regenerated">
+    <delete dir="public/coverage" />
+    <delete dir="public/doc" />
+  </target>
+
+  <target name="test" description="Run the PHPUnit test suite">
+    <exec executable="app/bin/phpunit" passthru="test">
+      <arg value="-c" />
+      <arg value="app/config/phpunit.xml" />
+    </exec>
+  </target>
+
+  <target name="coverage" description="Generate a code coverage report">
+    <exec executable="app/bin/phpunit">
+      <arg value="-c" />
+      <arg value="app/config/phpunit.xml" />
+      <arg value="--coverage-html" />
+      <arg value="public/coverage" />
+    </exec>
+  </target>
+
+  <target name="doc" description="Generate the PHPDoc files">
+    <exec executable="app/bin/phpdoc.php">
+      <arg value="-c" />
+      <arg value="app/config/phpdoc.xml" />
+    </exec>
+  </target>
+</project>

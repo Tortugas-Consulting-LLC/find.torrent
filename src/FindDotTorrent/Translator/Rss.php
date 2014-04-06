@@ -4,6 +4,12 @@ namespace FindDotTorrent\Translator;
 
 class Rss implements \FindDotTorrent\Translator
 {
+    /**
+     * Translate the raw content into an array of Item objects
+     *
+     * @param string $content
+     * @return array
+     */
     public function translate($content)
     {
         $dom = new \DOMDocument();
