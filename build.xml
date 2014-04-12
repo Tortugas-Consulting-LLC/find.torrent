@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project name="FindDotTorrent" default="build" basedir=".">
+  <target name="prepare" description="Setup the system for work">
+    <copy file="app/config/config.php.dist"
+          tofile="app/config/config.php"
+          overwrite="false"
+          />
+    <symlink
+        target="app/config/migrations.yml"
+        link="migrations.yml"
+        overwrite="true"
+        />
+    <exec executable="php">
+      <arg value="app/console.php" />
+      <arg value="migrations:migrate" />
+      <arg value="--no-interaction" />
+    </exec>
+  </target>
+
   <target name="build" description="Generates all supporting files / documents">
+    <phingcall target="prepare" />
     <phingcall target="clean" />
     <phingcall target="coverage" />
     <phingcall target="doc" />
@@ -13,7 +31,7 @@
   </target>
 
   <target name="test" description="Run the PHPUnit test suite">
-    <exec executable="app/bin/phpunit" passthru="test">
+    <exec executable="app/bin/phpunit" passthru="true">
       <arg value="-c" />
       <arg value="app/config/phpunit.xml" />
     </exec>

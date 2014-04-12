@@ -1,3 +1,7 @@
 /vendor/
 /public/doc/*
 /public/coverage/*
+/app/config/config.php
+/migrations.yml
+/app/bin/
+/db/db.sqlite3

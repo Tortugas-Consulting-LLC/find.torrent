@@ -2,18 +2,15 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
+$config = require __DIR__ . '/../app/config/config.php';
+
 $app = new Silex\Application();
 
 // Services
 $app->register(new Silex\Provider\ServiceControllerServiceProvider());
 $app->register(
     new Silex\Provider\DoctrineServiceProvider(),
-    array(
-        'db.options' => array(
-            'driver' => 'pdo_sqlite',
-            'path' => __DIR__ . '/../app/db.sqlite3'
-        )
-    )
+    array('db.options' => $config['db'])
 );
 
 // Supporting Classes

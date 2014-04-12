@@ -4,7 +4,9 @@
     "require": {
         "silex/silex": "~1.2",
         "guzzlehttp/guzzle": "~4.0",
-        "doctrine/dbal": "2.4.2"
+        "doctrine/dbal": "2.4.2",
+        "symfony/console": "2.4.3",
+        "doctrine/migrations": "dev-master"
     },
     "require-dev": {
         "phing/phing": "2.7.0",

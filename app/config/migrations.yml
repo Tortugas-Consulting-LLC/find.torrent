@@ -1,0 +1,4 @@
+name: Find.Torrent Migrations
+migrations_namespace: FindDotTorrent\Migrations
+table_name: migrations
+migrations_directory: db/migrations/
