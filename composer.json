@@ -6,7 +6,10 @@
         "guzzlehttp/guzzle": "~4.0",
         "doctrine/dbal": "2.4.2",
         "symfony/console": "2.4.3",
-        "doctrine/migrations": "dev-master"
+        "doctrine/migrations": "dev-master",
+        "behat/behat": "2.5.2",
+        "behat/common-contexts": "*",
+        "kriswallsmith/buzz": "0.10"
     },
     "require-dev": {
         "phing/phing": "2.7.0",

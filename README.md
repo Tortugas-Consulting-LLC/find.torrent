@@ -20,16 +20,22 @@ additional action to be taken.
   * Run `composer.phar install`
 * Set your PATH variable
   * `export PATH="app/bin/:$PATH"`
+* Run `phing prepare`
+* Modify app/config/config.php as necessary
 
 # Development
 This repository comes with a helpful phing configuration to allow you to run
 common commands.  Each of these are outlined below.  You can also view the list
 by running phing -list
 
-* `phing test` Run all unit tests with PHPUnit
+* `phing clean` Remove all file and directories that can be regenerated
+* `phing prepare` This will prepare the entire system for deployment
+* `phing build` This will prepare the entire system for development, including
+  running migrations, generating docs and coverage reports, etc.
+* `phing migrate` This will ensure the database is up-to-date
 * `phing coverage` Generate a PHPUnit HTML coverage report, accessible at public/coverage/
 * `phing doc` Generate source code documentation, accessible at public/docs
-* `phing clean` Remove all file and directories that can be regenerated
   (e.g. public/coverage and public/doc)
-* `phing build` This will run the clean, doc and coverage tasks
-
+* `phing test` Run all tests (unit and integration)
+* `phing unit` Run all unit tests with PHPUnit
+* `phing behat` Run behat integration tests

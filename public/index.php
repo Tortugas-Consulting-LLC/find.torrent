@@ -31,6 +31,7 @@ $app['search.controller'] = $app->share(function() use ($app) {
     return new \FindDotTorrent\Controller\SearchController($app['feeds.repository']);
 });
 
+// Routes
 $app->get('/api/feeds/', 'feed.controller:all');
 
 $app->get('/api/search/{term}', 'search.controller:all');

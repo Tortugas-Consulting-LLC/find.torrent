@@ -20,6 +20,25 @@ class MininovaTest extends \PHPUnit_Framework_TestCase
         return $client;
     }
 
+    public function testSerializesCorrectly()
+    {
+        $feed = new \FindDotTorrent\Feed\Mininova(
+            new FindDotTorrent\Client\GuzzleAdapter(),
+            $this->translator,
+            false
+        );
+
+        $expected = json_encode(
+            array(
+                'label' => 'Mininova',
+                'enabled' => false
+            )
+        );
+
+        $this->assertJsonStringEqualsJsonString($expected, json_encode($feed));
+    }
+
+
     public function testWillSearchCorrectly()
     {
         $content = file_get_contents(__DIR__ . '/../Fixtures/Mininova/12-angry-men.xml');
@@ -30,7 +49,8 @@ class MininovaTest extends \PHPUnit_Framework_TestCase
 
         $feed = new \FindDotTorrent\Feed\Mininova(
             $client,
-            $this->translator
+            $this->translator,
+            true
         );
         $items = $feed->search('12 angry men');
 

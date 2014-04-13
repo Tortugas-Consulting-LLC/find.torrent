@@ -16,8 +16,8 @@ class FeedsTest extends \PHPUnit_Framework_TestCase
     public function testCanGetEnabledFeeds()
     {
         $results = array(
-            array('label' => 'KickAss'),
-            array('label' => 'Mininova'),
+            array('label' => 'KickAss', 'enabled' => true),
+            array('label' => 'Mininova', 'enabled' => true),
         );
 
         $this->db->expects($this->once())
@@ -35,8 +35,8 @@ class FeedsTest extends \PHPUnit_Framework_TestCase
     public function testCanGetIndividualFeed()
     {
         $this->db->expects($this->once())
-           ->method('fetchAssoc')
-           ->will($this->returnValue(array('label' => 'KickAss')));
+                 ->method('fetchAssoc')
+                 ->will($this->returnValue(array('label' => 'KickAss', 'enabled' => true)));
 
         $repo = new \FindDotTorrent\Repository\Feeds($this->db, $this->factory);
         $feed = $repo->get('KickAss');
@@ -59,8 +59,8 @@ class FeedsTest extends \PHPUnit_Framework_TestCase
     public function testCanGetAll()
     {
         $results = array(
-            array('label' => 'KickAss'),
-            array('label' => 'Mininova'),
+            array('label' => 'KickAss', 'enabled' => true),
+            array('label' => 'Mininova', 'enabled' => true),
         );
 
         $this->db->expects($this->once())

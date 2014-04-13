@@ -8,7 +8,7 @@ use FindDotTorrent\Translator;
 /**
  * A feed handler for KickAss torrents
  */
-class KickAss implements \FindDotTorrent\Feed
+class KickAss implements \FindDotTorrent\Feed, \JsonSerializable
 {
     /**
      * @var Client
@@ -21,13 +21,19 @@ class KickAss implements \FindDotTorrent\Feed
     protected $translator;
 
     /**
+     * @var boolean
+     */
+    protected $enabled;
+
+    /**
      * @param Client $client
      * @param Translator $translator
      */
-    public function __construct(Client $client, Translator $translator)
+    public function __construct(Client $client, Translator $translator, $enabled)
     {
         $this->client = $client;
         $this->translator = $translator;
+        $this->enabled = (bool) $enabled;
     }
 
     /**
@@ -59,5 +65,18 @@ class KickAss implements \FindDotTorrent\Feed
     public function getLabel()
     {
         return 'KickAss';
+    }
+
+    /**
+     * Return an array to be used when serializing / encoding this object as JSON
+     *
+     * @return array
+     */
+    public function jsonSerialize()
+    {
+        return array(
+            'label' => $this->getLabel(),
+            'enabled' => $this->enabled
+        );
     }
 }

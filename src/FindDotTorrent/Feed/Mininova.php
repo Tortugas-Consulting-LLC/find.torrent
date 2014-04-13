@@ -8,7 +8,7 @@ use FindDotTorrent\Translator;
 /**
  * A feed handler for Mininova torrents
  */
-class Mininova implements \FindDotTorrent\Feed
+class Mininova implements \FindDotTorrent\Feed, \JsonSerializable
 {
     /**
      * @var Client
@@ -21,13 +21,20 @@ class Mininova implements \FindDotTorrent\Feed
     protected $translator;
 
     /**
+     * @var boolean
+     */
+    protected $enabled;
+
+    /**
      * @param Client $client
      * @param Translator $translator
+     * @param boolean $enabled
      */
-    public function __construct(Client $client, Translator $translator)
+    public function __construct(Client $client, Translator $translator, $enabled)
     {
         $this->client = $client;
         $this->translator = $translator;
+        $this->enabled = (bool) $enabled;
     }
 
     /**
@@ -59,5 +66,18 @@ class Mininova implements \FindDotTorrent\Feed
     public function getLabel()
     {
         return 'Mininova';
+    }
+
+    /**
+     * Return an array to be used when serializing / encoding this object as JSON
+     *
+     * @return array
+     */
+    public function jsonSerialize()
+    {
+        return array(
+            'label' => $this->getLabel(),
+            'enabled' => $this->enabled
+        );
     }
 }

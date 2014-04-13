@@ -22,12 +22,12 @@ class Factory
         $client = new Client\GuzzleAdapter();
         $translator = new Translator\Rss();
 
-        switch ($feed) {
+        switch ($feed['label']) {
           case 'Mininova':
-            return new Mininova($client, $translator);
+            return new Mininova($client, $translator, $feed['enabled']);
             break;
           case 'KickAss':
-            return new KickAss($client, $translator);
+            return new KickAss($client, $translator, $feed['enabled']);
             break;
           default:
             throw new \InvalidArgumentException("The requested feed type is not supported.");

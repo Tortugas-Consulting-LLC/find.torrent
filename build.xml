@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project name="FindDotTorrent" default="build" basedir=".">
-  <target name="prepare" description="Setup the system for work">
+  <target name="prepare" description="Setup the system for deployment">
     <copy file="app/config/config.php.dist"
           tofile="app/config/config.php"
           overwrite="false"
@@ -11,6 +11,18 @@
         link="migrations.yml"
         overwrite="true"
         />
+    <phingcall target="migrate" />
+  </target>
+
+  <target name="build" description="Setup the system for development">
+    <phingcall target="prepare" />
+    <phingcall target="clean" />
+    <phingcall target="coverage" />
+    <phingcall target="doc" />
+    <phingcall target="test" />
+  </target>
+
+  <target name="migrate" description="Run all the Doctrine migrations">
     <exec executable="php">
       <arg value="app/console.php" />
       <arg value="migrations:migrate" />
@@ -18,19 +30,24 @@
     </exec>
   </target>
 
-  <target name="build" description="Generates all supporting files / documents">
-    <phingcall target="prepare" />
-    <phingcall target="clean" />
-    <phingcall target="coverage" />
-    <phingcall target="doc" />
-  </target>
-
   <target name="clean" description="Remove all files and directories that can be regenerated">
     <delete dir="public/coverage" />
     <delete dir="public/doc" />
   </target>
 
-  <target name="test" description="Run the PHPUnit test suite">
+  <target name="test" description="Run all the tests for this project">
+    <phingcall target="unit" />
+    <phingcall target="behat" />
+  </target>
+
+  <target name="behat" description="Run the behat integration test suite">
+    <exec executable="app/bin/behat" passthru="true">
+      <arg value="-c" />
+      <arg value="app/config/behat.yml" />
+    </exec>
+  </target>
+
+  <target name="unit" description="Run the PHPUnit test suite">
     <exec executable="app/bin/phpunit" passthru="true">
       <arg value="-c" />
       <arg value="app/config/phpunit.xml" />

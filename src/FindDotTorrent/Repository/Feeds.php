@@ -35,11 +35,9 @@ class Feeds
      */
     public function all()
     {
-        $results = $this->db->fetchAll('SELECT label FROM feeds');
+        $results = $this->db->fetchAll('SELECT label, enabled FROM feeds');
 
-        $labels = array_column($results, 'label');
-
-        return $this->getFeeds($labels);
+        return $this->getFeeds($results);
     }
 
     /**
@@ -49,11 +47,9 @@ class Feeds
      */
     public function getEnabled()
     {
-        $results = $this->db->fetchAll('SELECT label FROM feeds WHERE enabled = 1');
+        $results = $this->db->fetchAll('SELECT label, enabled FROM feeds WHERE enabled = 1');
 
-        $labels = array_column($results, 'label');
-
-        return $this->getFeeds($labels);
+        return $this->getFeeds($results);
     }
 
     /**
@@ -65,7 +61,7 @@ class Feeds
     public function get($label)
     {
         $result = $this->db->fetchAssoc(
-            'SELECT label FROM feeds WHERE label = ?',
+            'SELECT label, enabled FROM feeds WHERE label = ?',
             array($label)
         );
 
@@ -73,7 +69,7 @@ class Feeds
             return false;
         }
 
-        return $this->getFeeds(array($label))[0];
+        return $this->getFeeds(array($result))[0];
     }
 
     /**
@@ -94,13 +90,13 @@ class Feeds
     /**
      * A helper method that transforms a list of feed labels into Feed objects
      *
-     * @param array $labels
+     * @param array $feeds
      * @return array An array of Feed objects
      */
-    protected function getFeeds($labels)
+    protected function getFeeds($feeds)
     {
-        return array_map(function ($label) {
-            return $this->factory->build($label);
-        }, $labels);
+        return array_map(function ($feed) {
+            return $this->factory->build($feed);
+        }, $feeds);
     }
 }

@@ -22,4 +22,11 @@ interface Feed
      * @return string
      */
     public function getLabel();
+
+    /**
+     * Return an array to be used when serializing / encoding this object as JSON
+     *
+     * @return array
+     */
+    public function jsonSerialize();
 }

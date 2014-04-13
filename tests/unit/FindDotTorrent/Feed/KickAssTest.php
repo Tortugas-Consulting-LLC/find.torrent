@@ -20,6 +20,24 @@ class KickAssTest extends \PHPUnit_Framework_TestCase
         return $client;
     }
 
+    public function testSerializesCorrectly()
+    {
+        $feed = new \FindDotTorrent\Feed\KickAss(
+            new FindDotTorrent\Client\GuzzleAdapter(),
+            $this->translator,
+            false
+        );
+
+        $expected = json_encode(
+            array(
+                'label' => 'KickAss',
+                'enabled' => false
+            )
+        );
+
+        $this->assertJsonStringEqualsJsonString($expected, json_encode($feed));
+    }
+
     public function testWillSearchCorrectly()
     {
         $content = file_get_contents(__DIR__ . '/../Fixtures/Kickass/12-angry-men.xml');
@@ -30,7 +48,8 @@ class KickAssTest extends \PHPUnit_Framework_TestCase
 
         $feed = new \FindDotTorrent\Feed\KickAss(
             $client,
-            $this->translator
+            $this->translator,
+            true
         );
         $items = $feed->search('12 angry men');
 

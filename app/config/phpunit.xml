@@ -1,5 +1,5 @@
 <phpunit
-    bootstrap="../../tests/bootstrap.php"
+    bootstrap="../../tests/unit/bootstrap.php"
     colors="false"
     convertErrorsToExceptions="true"
     convertNoticesToExceptions="true"
@@ -12,7 +12,7 @@
 
   <testsuites>
     <testsuite name="Find.Torrent Unit Tests">
-      <directory suffix=".php">../../tests</directory>
+      <directory suffix=".php">../../unit/tests</directory>
     </testsuite>
   </testsuites>
 </phpunit>
