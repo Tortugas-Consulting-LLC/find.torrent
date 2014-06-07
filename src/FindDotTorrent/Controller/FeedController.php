@@ -47,7 +47,7 @@ class FeedController
      */
     public function setStatus(Request $request, $feed)
     {
-        $enabled = (bool) $request->get('enabled');
+        $enabled = $request->get('enabled');
         $feed = $this->repo->get($feed);
 
         if (false === $feed) {

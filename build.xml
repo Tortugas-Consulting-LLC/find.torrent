@@ -45,6 +45,7 @@
     <exec executable="app/bin/behat" passthru="true">
       <arg value="-c" />
       <arg value="app/config/behat.yml" />
+      <arg value="--ansi" />
     </exec>
   </target>
 

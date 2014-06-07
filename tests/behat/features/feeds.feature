@@ -3,7 +3,8 @@ Feature: Feeds API endpoint
   I need to be able to manipulate the feed configuration
 
   Scenario: Listing all feeds
-    When I send a GET request to "/api/feeds"
+    When I set header "Content-Type" with value "application/json"
+    And I send a GET request to "/api/feeds"
     Then the response code should be 200
     And the response should contain json:
     """
@@ -20,11 +21,25 @@ Feature: Feeds API endpoint
     """
 
     Scenario: Disabling a feed
-      When I send a PUT request to "/api/feeds/KickAss" with body:
+      When I set header "Content-Type" with value "application/json"
+      And I send a PUT request to "/api/feeds/KickAss" with body:
       """
       {
-        "feed": "KickAss",
         "enabled": false
       }
       """
-      Then the response code should be 204
+      And I send a GET request to "/api/feeds"
+      Then the response code should be 200
+      And the response should contain json:
+      """
+      [
+        {
+          "label": "KickAss",
+          "enabled": false
+        },
+        {
+          "label": "Mininova",
+          "enabled": true
+        }
+      ]
+      """
