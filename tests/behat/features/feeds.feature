@@ -18,3 +18,13 @@ Feature: Feeds API endpoint
       }
     ]
     """
+
+    Scenario: Disabling a feed
+      When I send a PUT request to "/api/feeds/KickAss" with body:
+      """
+      {
+        "feed": "KickAss",
+        "enabled": false
+      }
+      """
+      Then the response code should be 204

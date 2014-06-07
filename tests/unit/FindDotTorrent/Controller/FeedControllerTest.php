@@ -1,5 +1,7 @@
 <?php
 
+use Symfony\Component\HttpFoundation\Request;
+
 class FeedControllerTest extends \PHPUnit_Framework_TestCase
 {
     protected $repo;
@@ -41,11 +43,14 @@ class FeedControllerTest extends \PHPUnit_Framework_TestCase
                    ->method('setStatus')
                    ->with($feed, true);
 
+        $request = new Request([], ['enabled' => true]);
+
         $controller = new \FindDotTorrent\Controller\FeedController($this->repo);
-        $response = $controller->setStatus('KickAss', true);
+        $response = $controller->setStatus($request, 'KickAss');
 
         $this->assertInstanceOf('Symfony\Component\HttpFoundation\JsonResponse', $response);
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals(204, $response->getStatusCode());
+
     }
 
     public function testCannotSetStatusOnNonExistentFeed()
@@ -55,8 +60,10 @@ class FeedControllerTest extends \PHPUnit_Framework_TestCase
                    ->with('KickAss')
                    ->will($this->returnValue(false));
 
+        $request = new Request([], ['enabled' => true]);
+
         $controller = new \FindDotTorrent\Controller\FeedController($this->repo);
-        $response = $controller->setStatus('KickAss', true);
+        $response = $controller->setStatus($request, 'KickAss');
 
         $this->assertInstanceOf('Symfony\Component\HttpFoundation\JsonResponse', $response);
         $this->assertEquals(400, $response->getStatusCode());

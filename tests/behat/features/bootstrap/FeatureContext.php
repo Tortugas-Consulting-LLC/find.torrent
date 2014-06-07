@@ -4,6 +4,8 @@ use Behat\Behat\Context\ClosuredContextInterface,
     Behat\Behat\Context\TranslatedContextInterface,
     Behat\Behat\Context\BehatContext,
     Behat\Behat\Exception\PendingException;
+use Behat\Behat\Event\SuiteEvent,
+    Behat\Behat\Event\ScenarioEvent;
 use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
 
@@ -19,6 +21,8 @@ use Behat\Gherkin\Node\PyStringNode,
  */
 class FeatureContext extends BehatContext
 {
+    protected $app;
+
     /**
      * Initializes context.
      * Every scenario gets its own context object.
@@ -27,11 +31,26 @@ class FeatureContext extends BehatContext
      */
     public function __construct(array $parameters)
     {
+        $config = require __DIR__ . '/../../../../app/config/config.php';
+        $this->app = require __DIR__ . '/../../../../app/app.php';
+
         $this->useContext(
             'api',
-            new Behat\CommonContexts\WebApiContext('http://keelerm.com:10000')
+            new Behat\CommonContexts\WebApiContext($config['basePath'])
         );
-        // Initialize your context here
+    }
+
+    /**
+     * @BeforeScenario
+     */
+    public function enableAllFeeds(ScenarioEvent $event)
+    {
+        $repo = $this->app['feeds.repository'];
+        $feeds = $repo->all();
+
+        array_walk($feeds, function ($feed) use ($repo) {
+            $repo->setStatus($feed, true);
+        });
     }
 
 //

@@ -4,6 +4,7 @@ namespace FindDotTorrent\Controller;
 
 use FindDotTorrent\Repository\Feeds;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Feed Controller
@@ -40,13 +41,14 @@ class FeedController
     /**
      * Enable / disable an individual feed
      *
-     * @param string $label The feed to set the status on
-     * @param bool $enabled
+     * @param Request $request
+     * @param string $feed The feed to set the status on
      * @return JsonResponse
      */
-    public function setStatus($label, $enabled)
+    public function setStatus(Request $request, $feed)
     {
-        $feed = $this->repo->get($label);
+        $enabled = (bool) $request->get('enabled');
+        $feed = $this->repo->get($feed);
 
         if (false === $feed) {
             return new JsonResponse(array('error' => 'The requested feed does not exist'), 400);
@@ -54,6 +56,6 @@ class FeedController
 
         $this->repo->setStatus($feed, $enabled);
 
-        return new JsonResponse();
+        return new JsonResponse(null, 204);
     }
 }

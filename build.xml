@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project name="FindDotTorrent" default="build" basedir=".">
-  <target name="prepare" description="Setup the system for deployment">
+  <target name="prepare" description="Prepare the system for work">
     <copy file="app/config/config.php.dist"
           tofile="app/config/config.php"
           overwrite="false"
@@ -14,7 +14,7 @@
     <phingcall target="migrate" />
   </target>
 
-  <target name="build" description="Setup the system for development">
+  <target name="build" description="Setup the system for us">
     <phingcall target="prepare" />
     <phingcall target="clean" />
     <phingcall target="coverage" />
