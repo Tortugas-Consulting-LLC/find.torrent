@@ -11,6 +11,19 @@ use FindDotTorrent\Translator;
 class Factory
 {
     /**
+     * @var Client
+     */
+    protected $client;
+
+    /**
+     * @param Client $client
+     */
+    public function __construct(Client $client)
+    {
+        $this->client = $client;
+    }
+
+    /**
      * Build and return the requested feed type
      *
      * @param string $feed The name of the feed to build
@@ -19,15 +32,14 @@ class Factory
      */
     public function build($feed)
     {
-        $client = new Client\GuzzleAdapter();
         $translator = new Translator\Rss();
 
         switch ($feed['label']) {
           case 'Mininova':
-            return new Mininova($client, $translator, $feed['enabled']);
+            return new Mininova($this->client, $translator, $feed['enabled']);
             break;
           case 'KickAss':
-            return new KickAss($client, $translator, $feed['enabled']);
+            return new KickAss($this->client, $translator, $feed['enabled']);
             break;
           default:
             throw new \InvalidArgumentException("The requested feed type is not supported.");

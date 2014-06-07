@@ -4,7 +4,8 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
 {
     public function testReturnsCorrectFeed()
     {
-        $factory = new \FindDotTorrent\Feed\Factory();
+        $client = new \FindDotTorrent\Client\GuzzleAdapter();
+        $factory = new \FindDotTorrent\Feed\Factory($client);
 
         $kickass = $factory->build(array('label' => 'KickAss', 'enabled' => true));
 
