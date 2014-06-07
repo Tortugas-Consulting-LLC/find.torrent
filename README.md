@@ -1,3 +1,5 @@
+![find.torrent](public/assets/img/logo.png)
+
 # find.torrent Silex Edition
 
 find.torrent is a service to facilitate the discovery and downloading of
