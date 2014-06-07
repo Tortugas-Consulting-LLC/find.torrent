@@ -24,6 +24,8 @@ additional action to be taken.
   * `export PATH="app/bin/:$PATH"`
 * Run `phing prepare`
 * Modify app/config/config.php as necessary
+* Run `php -S 0.0.0.0:10000 -t public`
+* Run `phing build`
 
 # Development
 This repository comes with a helpful phing configuration to allow you to run

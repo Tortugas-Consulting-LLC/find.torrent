@@ -11,12 +11,12 @@
         link="migrations.yml"
         overwrite="true"
         />
-    <phingcall target="migrate" />
   </target>
 
   <target name="build" description="Setup the system for us">
     <phingcall target="prepare" />
     <phingcall target="clean" />
+    <phingcall target="migrate" />
     <phingcall target="coverage" />
     <phingcall target="doc" />
     <phingcall target="test" />
@@ -30,7 +30,8 @@
     </exec>
   </target>
 
-  <target name="clean" description="Remove all files and directories that can be regenerated">
+  <target name="clean"
+          description="Remove all files and directories that can be regenerated">
     <delete dir="public/coverage" />
     <delete dir="public/doc" />
   </target>
