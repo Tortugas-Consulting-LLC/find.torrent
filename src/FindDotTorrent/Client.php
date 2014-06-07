@@ -13,4 +13,6 @@ interface Client
      * @return string The raw content at the specified url
      */
     public function get($url);
+
+    public function download($url, $saveAs);
 }

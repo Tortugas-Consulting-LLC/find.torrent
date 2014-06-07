@@ -5,5 +5,6 @@ return array(
         'driver' => 'pdo_sqlite',
         'path' => __DIR__ . '/../../db/db.sqlite3'
     ),
-    'basePath' => 'http://localhost:10000/'
+    'basePath' => 'http://localhost:10000/',
+    'downloadPath' => '/tmp/downloads'
 );
