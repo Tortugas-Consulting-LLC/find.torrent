@@ -43,7 +43,18 @@ class GuzzleAdapter implements \FindDotTorrent\Client
     public function download($url, $saveAs)
     {
         try {
-            $this->client->get($url, ['save_to' => $saveAs]);
+            $this->client->get(
+                $url,
+                [
+                    'save_to' => $saveAs,
+                    'config' => [
+                        'curl' => [
+                            CURLOPT_ENCODING => 'gzip',
+                            CURLOPT_RETURNTRANSFER => 1
+                        ]
+                    ]
+                ]
+            );
         } catch (RequestException $e) {
             return false;
         }
