@@ -22,7 +22,7 @@ class FeedControllerTest extends \PHPUnit_Framework_TestCase
                    ->method('all')
                    ->will($this->returnValue(array($kaFeed, $miniFeed)));
 
-        $controller = new \FindDotTorrent\Controller\FeedController($this->repo);
+        $controller = new \FindDotTorrent\Ui\Controller\FeedController($this->repo);
 
         $response = $controller->all();
 
@@ -45,7 +45,7 @@ class FeedControllerTest extends \PHPUnit_Framework_TestCase
 
         $request = new Request([], ['enabled' => true]);
 
-        $controller = new \FindDotTorrent\Controller\FeedController($this->repo);
+        $controller = new \FindDotTorrent\Ui\Controller\FeedController($this->repo);
         $response = $controller->setStatus($request, 'KickAss');
 
         $this->assertInstanceOf('Symfony\Component\HttpFoundation\JsonResponse', $response);
@@ -62,7 +62,7 @@ class FeedControllerTest extends \PHPUnit_Framework_TestCase
 
         $request = new Request([], ['enabled' => true]);
 
-        $controller = new \FindDotTorrent\Controller\FeedController($this->repo);
+        $controller = new \FindDotTorrent\Ui\Controller\FeedController($this->repo);
         $response = $controller->setStatus($request, 'KickAss');
 
         $this->assertInstanceOf('Symfony\Component\HttpFoundation\JsonResponse', $response);

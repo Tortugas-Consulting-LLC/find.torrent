@@ -20,7 +20,7 @@ class SearchControllerTest extends \PHPUnit_Framework_TestCase
                    ->method('getEnabled')
                    ->will($this->returnValue(array($kaFeed, $miniFeed)));
 
-        $controller = new \FindDotTorrent\Controller\SearchController($this->repo);
+        $controller = new \FindDotTorrent\Ui\Controller\SearchController($this->repo);
 
         $response = $controller->all('12 Angry Men');
 
@@ -37,7 +37,7 @@ class SearchControllerTest extends \PHPUnit_Framework_TestCase
                    ->with('KickAss')
                    ->will($this->returnValue($feed));
 
-        $controller = new \FindDotTorrent\Controller\SearchController($this->repo);
+        $controller = new \FindDotTorrent\Ui\Controller\SearchController($this->repo);
 
         $response = $controller->one('KickAss', '12 Angry Men');
 
@@ -52,7 +52,7 @@ class SearchControllerTest extends \PHPUnit_Framework_TestCase
                    ->with('non-existent-feed')
                    ->will($this->returnValue(false));
 
-        $controller = new \FindDotTorrent\Controller\SearchController($this->repo);
+        $controller = new \FindDotTorrent\Ui\Controller\SearchController($this->repo);
 
         $response = $controller->one('non-existent-feed', '12 Angry Men');
 

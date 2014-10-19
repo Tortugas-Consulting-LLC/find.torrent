@@ -1,6 +1,6 @@
 <?php
 
-namespace FindDotTorrent\Controller;
+namespace FindDotTorrent\Ui\Controller;
 
 use FindDotTorrent\Domain;
 use Symfony\Component\HttpFoundation\JsonResponse;
