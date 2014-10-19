@@ -11,7 +11,7 @@ class MininovaTest extends \PHPUnit_Framework_TestCase
 
     public function getMockClient($url, $content)
     {
-        $client = $this->getMock('\FindDotTorrent\Client');
+        $client = $this->getMock('\FindDotTorrent\Domain\Client');
         $client->expects($this->once())
                ->method('get')
                ->with($url)
@@ -23,7 +23,7 @@ class MininovaTest extends \PHPUnit_Framework_TestCase
     public function testSerializesCorrectly()
     {
         $feed = new \FindDotTorrent\Feed\Mininova(
-            new FindDotTorrent\Client\GuzzleAdapter(),
+            new FindDotTorrent\Infrastructure\GuzzleClient(),
             $this->translator,
             false
         );

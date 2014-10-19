@@ -1,6 +1,6 @@
 <?php
 
-namespace FindDotTorrent;
+namespace FindDotTorrent\Domain;
 
 /**
  * A client is responsible for returning the raw content from the specified

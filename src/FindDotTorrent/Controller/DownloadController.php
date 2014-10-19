@@ -2,14 +2,14 @@
 
 namespace FindDotTorrent\Controller;
 
-use FindDotTorrent\Client;
+use FindDotTorrent\Domain;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class DownloadController
 {
     /**
-     * @var Client
+     * @var Domain\Client
      */
     protected $client;
 
@@ -19,10 +19,10 @@ class DownloadController
     protected $downloadPath;
 
     /**
-     * @param Client $client
+     * @param Domain\Client $client
      * @param string $downloadPath
      */
-    public function __construct(Client $client, $downloadPath)
+    public function __construct(Domain\Client $client, $downloadPath)
     {
         $this->client = $client;
         $this->downloadPath = $downloadPath;

@@ -2,7 +2,7 @@
 
 namespace FindDotTorrent\Feed;
 
-use FindDotTorrent\Client;
+use FindDotTorrent\Domain;
 use FindDotTorrent\Translator;
 
 /**
@@ -11,14 +11,14 @@ use FindDotTorrent\Translator;
 class Factory
 {
     /**
-     * @var Client
+     * @var Domain\Client
      */
     protected $client;
 
     /**
-     * @param Client $client
+     * @param Domain\Client $client
      */
-    public function __construct(Client $client)
+    public function __construct(Domain\Client $client)
     {
         $this->client = $client;
     }

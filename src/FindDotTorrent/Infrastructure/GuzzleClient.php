@@ -1,13 +1,14 @@
 <?php
 
-namespace FindDotTorrent\Client;
+namespace FindDotTorrent\Infrastructure;
 
+use FindDotTorrent\Domain;
 use GuzzleHttp\Exception\RequestException;
 
 /**
  * A simple client adapter wrapping the populate GuzzleHttp\Client
  */
-class GuzzleAdapter implements \FindDotTorrent\Client
+class GuzzleClient implements Domain\Client
 {
     /**
      * @var GuzzleHttp\Client

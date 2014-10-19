@@ -1,7 +1,7 @@
 <?php
 
 $app['guzzle.client'] = $app->share(function() {
-    return new \FindDotTorrent\Client\GuzzleAdapter();
+    return new \FindDotTorrent\Infrastructure\GuzzleClient();
 });
 
 $app['feed.factory'] = $app->share(function() use ($app) {

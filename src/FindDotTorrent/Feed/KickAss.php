@@ -2,7 +2,7 @@
 
 namespace FindDotTorrent\Feed;
 
-use FindDotTorrent\Client;
+use FindDotTorrent\Domain;
 use FindDotTorrent\Translator;
 
 /**
@@ -11,7 +11,7 @@ use FindDotTorrent\Translator;
 class KickAss implements \FindDotTorrent\Feed, \JsonSerializable
 {
     /**
-     * @var Client
+     * @var Domain\Client
      */
     protected $client;
 
@@ -26,10 +26,10 @@ class KickAss implements \FindDotTorrent\Feed, \JsonSerializable
     protected $enabled;
 
     /**
-     * @param Client $client
+     * @param Domain\Client $client
      * @param Translator $translator
      */
-    public function __construct(Client $client, Translator $translator, $enabled)
+    public function __construct(Domain\Client $client, Translator $translator, $enabled)
     {
         $this->client = $client;
         $this->translator = $translator;

@@ -38,7 +38,7 @@ class DownloadControllerTest extends \PHPUnit_Framework_TestCase
 
     protected function getMockClient($url, $downloadPath, $returnValue)
     {
-        $client = $this->getMock('FindDotTorrent\Client');
+        $client = $this->getMock('FindDotTorrent\Infrastructure\GuzzleClient');
         $client->expects($this->once())
                ->method('download')
                ->with(

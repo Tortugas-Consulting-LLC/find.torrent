@@ -7,7 +7,7 @@ class FeedsTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $client = new \FindDotTorrent\Client\GuzzleAdapter();
+        $client = new \FindDotTorrent\Infrastructure\GuzzleClient();
         $this->factory = new \FindDotTorrent\Feed\Factory($client);
         $this->db = $this->getMockBuilder('\Doctrine\DBAL\Connection')
                          ->disableOriginalConstructor()
