@@ -1,6 +1,6 @@
 <?php
 
-namespace FindDotTorrent;
+namespace FindDotTorrent\Domain;
 
 /**
  * An item represents a search result from a particular feed.

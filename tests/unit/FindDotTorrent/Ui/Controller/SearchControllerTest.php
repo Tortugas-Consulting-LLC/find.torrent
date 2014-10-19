@@ -62,7 +62,7 @@ class SearchControllerTest extends \PHPUnit_Framework_TestCase
 
     protected function getMockFeed($title, $link, $label)
     {
-        $item = new \FindDotTorrent\Item($title, $link);
+        $item = new \FindDotTorrent\Domain\Item($title, $link);
         $item->setLabel($label);
 
         $feed = $this->getMock('\FindDotTorrent\Feed');

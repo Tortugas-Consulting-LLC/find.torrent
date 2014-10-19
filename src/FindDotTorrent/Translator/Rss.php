@@ -30,7 +30,7 @@ class Rss implements \FindDotTorrent\Translator
             $title = $item->getElementsByTagName('title')->item(0)->nodeValue;
             $url = $item->getElementsByTagName('enclosure')->item(0)->getAttribute('url');
 
-            $items[] = new \FindDotTorrent\Item(trim($title), $url);
+            $items[] = new \FindDotTorrent\Domain\Item(trim($title), $url);
         }
 
         return $items;
