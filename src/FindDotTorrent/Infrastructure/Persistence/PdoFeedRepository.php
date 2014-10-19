@@ -1,12 +1,13 @@
 <?php
 
-namespace FindDotTorrent\Repository;
+namespace FindDotTorrent\Infrastructure\Persistence;
 
 use Doctrine\DBAL\Connection;
+use FindDotTorrent\Domain;
 use FindDotTorrent\Feed\Factory;
 use FindDotTorrent\Feed;
 
-class Feeds
+class PdoFeedRepository implements Domain\FeedRepository
 {
     /**
      * @var Connection
@@ -29,9 +30,7 @@ class Feeds
     }
 
     /**
-     * Retrieve all feeds, regardless of whether or not they are enabled
-     *
-     * @return array An array of Feed objects
+     * @{inheritDoc}
      */
     public function all()
     {
@@ -41,9 +40,7 @@ class Feeds
     }
 
     /**
-     * Retrieve all enabled feeds
-     *
-     * @return array An array of Feed objects
+     * @{inheritDoc}
      */
     public function getEnabled()
     {
@@ -53,10 +50,7 @@ class Feeds
     }
 
     /**
-     * Retrieve the requested feed
-     *
-     * @param string $feed The name of the feed to retrieve
-     * @return Feed|false
+     * @{inheritDoc}
      */
     public function get($label)
     {
@@ -73,10 +67,7 @@ class Feeds
     }
 
     /**
-     * Set the status of the specified feed
-     *
-     * @param Feed $feed The feed to set the status on
-     * @param bool $enabled A boolean to represent that status of the feed
+     * @{inheritDoc}
      */
     public function setStatus(Feed $feed, $enabled)
     {

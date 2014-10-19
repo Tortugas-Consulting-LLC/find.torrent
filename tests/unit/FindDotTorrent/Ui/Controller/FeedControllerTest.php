@@ -8,7 +8,7 @@ class FeedControllerTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->repo = $this->getMockBuilder('\FindDotTorrent\Repository\Feeds')
+        $this->repo = $this->getMockBuilder('\FindDotTorrent\Domain\FeedRepository')
                            ->disableOriginalConstructor()
                            ->getMock();
     }

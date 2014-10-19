@@ -9,5 +9,5 @@ $app['feed.factory'] = $app->share(function() use ($app) {
 });
 
 $app['feeds.repository'] = $app->share(function() use ($app) {
-    return new \FindDotTorrent\Repository\Feeds($app['db'], $app['feed.factory']);
+    return new \FindDotTorrent\Infrastructure\Persistence\PdoFeedRepository($app['db'], $app['feed.factory']);
 });

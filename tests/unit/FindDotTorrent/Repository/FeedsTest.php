@@ -25,7 +25,7 @@ class FeedsTest extends \PHPUnit_Framework_TestCase
            ->method('fetchAll')
            ->will($this->returnValue($results));
 
-        $repo = new \FindDotTorrent\Repository\Feeds($this->db, $this->factory);
+        $repo = new \FindDotTorrent\Infrastructure\Persistence\PdoFeedRepository($this->db, $this->factory);
         $feeds = $repo->getEnabled();
 
         $this->assertCount(2, $feeds);
@@ -39,7 +39,7 @@ class FeedsTest extends \PHPUnit_Framework_TestCase
                  ->method('fetchAssoc')
                  ->will($this->returnValue(array('label' => 'KickAss', 'enabled' => true)));
 
-        $repo = new \FindDotTorrent\Repository\Feeds($this->db, $this->factory);
+        $repo = new \FindDotTorrent\Infrastructure\Persistence\PdoFeedRepository($this->db, $this->factory);
         $feed = $repo->get('KickAss');
 
         $this->assertInstanceOf('\FindDotTorrent\Feed\KickAss', $feed);
@@ -51,7 +51,7 @@ class FeedsTest extends \PHPUnit_Framework_TestCase
            ->method('fetchAssoc')
            ->will($this->returnValue(array()));
 
-        $repo = new \FindDotTorrent\Repository\Feeds($this->db, $this->factory);
+        $repo = new \FindDotTorrent\Infrastructure\Persistence\PdoFeedRepository($this->db, $this->factory);
         $feed = $repo->get('KickAss');
 
         $this->assertFalse($feed);
@@ -68,7 +68,7 @@ class FeedsTest extends \PHPUnit_Framework_TestCase
            ->method('fetchAll')
            ->will($this->returnValue($results));
 
-        $repo = new \FindDotTorrent\Repository\Feeds($this->db, $this->factory);
+        $repo = new \FindDotTorrent\Infrastructure\Persistence\PdoFeedRepository($this->db, $this->factory);
         $feeds = $repo->all();
 
         $this->assertCount(2, $feeds);
@@ -91,7 +91,7 @@ class FeedsTest extends \PHPUnit_Framework_TestCase
                array('label' => 'KickAss')
            );
 
-        $repo = new \FindDotTorrent\Repository\Feeds($this->db, $this->factory);
+        $repo = new \FindDotTorrent\Infrastructure\Persistence\PdoFeedRepository($this->db, $this->factory);
         $repo->setStatus($feed, true);
     }
 }

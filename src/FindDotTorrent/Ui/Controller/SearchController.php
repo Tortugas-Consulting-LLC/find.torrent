@@ -2,7 +2,7 @@
 
 namespace FindDotTorrent\Ui\Controller;
 
-use FindDotTorrent\Repository\Feeds;
+use FindDotTorrent\Domain;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
@@ -14,14 +14,14 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class SearchController
 {
     /**
-     * @var Feeds
+     * @var Domain\FeedRepository
      */
     protected $repo;
 
     /**
-     * @param Feeds $repo
+     * @param Domain\FeedRepository $repo
      */
-    public function __construct(Feeds $repo)
+    public function __construct(Domain\FeedRepository $repo)
     {
         $this->repo = $repo;
     }
