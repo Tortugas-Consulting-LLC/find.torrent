@@ -40,7 +40,7 @@ class KickAssTest extends \PHPUnit_Framework_TestCase
 
     public function testWillSearchCorrectly()
     {
-        $content = file_get_contents(__DIR__ . '/../Fixtures/Kickass/12-angry-men.xml');
+        $content = file_get_contents(__DIR__ . '/../../Fixtures/Kickass/12-angry-men.xml');
         $client = $this->getMockClient(
             'http://kickass.to/usearch/12%20angry%20men/?rss=1',
             $content

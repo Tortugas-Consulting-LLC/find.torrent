@@ -41,7 +41,7 @@ class MininovaTest extends \PHPUnit_Framework_TestCase
 
     public function testWillSearchCorrectly()
     {
-        $content = file_get_contents(__DIR__ . '/../Fixtures/Mininova/12-angry-men.xml');
+        $content = file_get_contents(__DIR__ . '/../../Fixtures/Mininova/12-angry-men.xml');
         $client = $this->getMockClient(
             'http://mininova.org/rss/12%20angry%20men',
             $content
