@@ -1,6 +1,8 @@
 <?php
 
-namespace FindDotTorrent\Translator;
+namespace FindDotTorrent\Domain\Translator;
+
+use FindDotTorrent\Domain;
 
 /**
  * Rss Translator
@@ -8,7 +10,7 @@ namespace FindDotTorrent\Translator;
  * The rss translator should be able to take raw rss content and return an
  * array of Item objects
  */
-class Rss implements \FindDotTorrent\Domain\Translator
+class Rss implements Domain\Translator
 {
     /**
      * Translate the raw content into an array of Item objects

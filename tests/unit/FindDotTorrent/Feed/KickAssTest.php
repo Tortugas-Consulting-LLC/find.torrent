@@ -6,7 +6,7 @@ class KickAssTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->translator = new \FindDotTorrent\Translator\Rss();
+        $this->translator = new \FindDotTorrent\Domain\Translator\Rss();
     }
 
     public function getMockClient($url, $content)

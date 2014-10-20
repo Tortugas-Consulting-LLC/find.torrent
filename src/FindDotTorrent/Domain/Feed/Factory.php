@@ -3,8 +3,6 @@
 namespace FindDotTorrent\Domain\Feed;
 
 use FindDotTorrent\Domain;
-use FindDotTorrent\Translator;
-
 /**
  * This factory constructs feeds, injecting in all their needed dependencies
  */
@@ -32,7 +30,7 @@ class Factory
      */
     public function build($feed)
     {
-        $translator = new Translator\Rss();
+        $translator = new Domain\Translator\Rss();
 
         switch ($feed['label']) {
           case 'Mininova':

@@ -3,12 +3,11 @@
 namespace FindDotTorrent\Domain\Feed;
 
 use FindDotTorrent\Domain;
-use FindDotTorrent\Domain\Translator;
 
 /**
  * A feed handler for Mininova torrents
  */
-class Mininova implements \FindDotTorrent\Domain\Feed, \JsonSerializable
+class Mininova implements Domain\Feed, \JsonSerializable
 {
     /**
      * @var Domain\Client
@@ -16,7 +15,7 @@ class Mininova implements \FindDotTorrent\Domain\Feed, \JsonSerializable
     protected $client;
 
     /**
-     * @var Translator
+     * @var Domain\Translator
      */
     protected $translator;
 
@@ -27,10 +26,10 @@ class Mininova implements \FindDotTorrent\Domain\Feed, \JsonSerializable
 
     /**
      * @param Domain\Client $client
-     * @param Translator $translator
+     * @param Domain\Translator $translator
      * @param boolean $enabled
      */
-    public function __construct(Domain\Client $client, Translator $translator, $enabled)
+    public function __construct(Domain\Client $client, Domain\Translator $translator, $enabled)
     {
         $this->client = $client;
         $this->translator = $translator;
