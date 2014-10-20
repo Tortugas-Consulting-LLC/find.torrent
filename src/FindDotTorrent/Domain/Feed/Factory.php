@@ -3,6 +3,7 @@
 namespace FindDotTorrent\Domain\Feed;
 
 use FindDotTorrent\Domain;
+
 /**
  * This factory constructs feeds, injecting in all their needed dependencies
  */

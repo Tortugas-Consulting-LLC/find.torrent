@@ -1,5 +1,8 @@
 <?php
 
+namespace FindDotTorrent\Ui\Controller;
+
+use FindDotTorrent\Ui;
 use Symfony\Component\HttpFoundation\Request;
 
 class DownloadControllerTest extends \PHPUnit_Framework_TestCase
@@ -12,7 +15,7 @@ class DownloadControllerTest extends \PHPUnit_Framework_TestCase
 
         $client = $this->getMockClient($url, $downloadPath, true);
 
-        $controller = new \FindDotTorrent\Ui\Controller\DownloadController($client, $downloadPath);
+        $controller = new Ui\Controller\DownloadController($client, $downloadPath);
 
         $response = $controller->download($request);
 
@@ -28,7 +31,7 @@ class DownloadControllerTest extends \PHPUnit_Framework_TestCase
 
         $client = $this->getMockClient($url, $downloadPath, false);
 
-        $controller = new \FindDotTorrent\Ui\Controller\DownloadController($client, $downloadPath);
+        $controller = new Ui\Controller\DownloadController($client, $downloadPath);
 
         $response = $controller->download($request);
 

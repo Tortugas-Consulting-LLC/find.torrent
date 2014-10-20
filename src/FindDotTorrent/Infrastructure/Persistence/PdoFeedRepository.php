@@ -4,8 +4,6 @@ namespace FindDotTorrent\Infrastructure\Persistence;
 
 use Doctrine\DBAL\Connection;
 use FindDotTorrent\Domain;
-use FindDotTorrent\Domain\Feed\Factory;
-use FindDotTorrent\Domain\Feed;
 
 class PdoFeedRepository implements Domain\FeedRepository
 {
@@ -15,15 +13,15 @@ class PdoFeedRepository implements Domain\FeedRepository
     protected $db;
 
     /**
-     * @var Factory
+     * @var Domain\Feed\Factory
      */
     protected $factory;
 
     /**
      * @param Connection $db
-     * @pararm Factory $factory
+     * @pararm Domain\Feed\Factory $factory
      */
-    public function __construct(Connection $db, Factory $factory)
+    public function __construct(Connection $db, Domain\Feed\Factory $factory)
     {
         $this->db = $db;
         $this->factory = $factory;
@@ -69,7 +67,7 @@ class PdoFeedRepository implements Domain\FeedRepository
     /**
      * @{inheritDoc}
      */
-    public function setStatus(Feed $feed, $enabled)
+    public function setStatus(Domain\Feed $feed, $enabled)
     {
         $this->db->update(
             'feeds',
@@ -79,10 +77,11 @@ class PdoFeedRepository implements Domain\FeedRepository
     }
 
     /**
-     * A helper method that transforms a list of feed labels into Feed objects
+     * A helper method that transforms a list of feed labels into Domain\Feed
+     * objects
      *
      * @param array $feeds
-     * @return array An array of Feed objects
+     * @return array An array of Domain\Feed objects
      */
     protected function getFeeds($feeds)
     {

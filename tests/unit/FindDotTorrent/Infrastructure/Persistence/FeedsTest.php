@@ -1,5 +1,10 @@
 <?php
 
+namespace FindDotTorrent\Infrastructure\Persistence;
+
+use FindDotTorrent\Domain;
+use FindDotTorrent\Infrastructure;
+
 class FeedsTest extends \PHPUnit_Framework_TestCase
 {
     protected $factory;
@@ -7,8 +12,8 @@ class FeedsTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $client = new \FindDotTorrent\Infrastructure\GuzzleClient();
-        $this->factory = new \FindDotTorrent\Domain\Feed\Factory($client);
+        $client = new Infrastructure\GuzzleClient();
+        $this->factory = new Domain\Feed\Factory($client);
         $this->db = $this->getMockBuilder('\Doctrine\DBAL\Connection')
                          ->disableOriginalConstructor()
                          ->getMock();
@@ -25,7 +30,7 @@ class FeedsTest extends \PHPUnit_Framework_TestCase
            ->method('fetchAll')
            ->will($this->returnValue($results));
 
-        $repo = new \FindDotTorrent\Infrastructure\Persistence\PdoFeedRepository($this->db, $this->factory);
+        $repo = new Infrastructure\Persistence\PdoFeedRepository($this->db, $this->factory);
         $feeds = $repo->getEnabled();
 
         $this->assertCount(2, $feeds);
@@ -39,7 +44,7 @@ class FeedsTest extends \PHPUnit_Framework_TestCase
                  ->method('fetchAssoc')
                  ->will($this->returnValue(array('label' => 'KickAss', 'enabled' => true)));
 
-        $repo = new \FindDotTorrent\Infrastructure\Persistence\PdoFeedRepository($this->db, $this->factory);
+        $repo = new Infrastructure\Persistence\PdoFeedRepository($this->db, $this->factory);
         $feed = $repo->get('KickAss');
 
         $this->assertInstanceOf('\FindDotTorrent\Domain\Feed\KickAss', $feed);
@@ -51,7 +56,7 @@ class FeedsTest extends \PHPUnit_Framework_TestCase
            ->method('fetchAssoc')
            ->will($this->returnValue(array()));
 
-        $repo = new \FindDotTorrent\Infrastructure\Persistence\PdoFeedRepository($this->db, $this->factory);
+        $repo = new Infrastructure\Persistence\PdoFeedRepository($this->db, $this->factory);
         $feed = $repo->get('KickAss');
 
         $this->assertFalse($feed);
@@ -68,7 +73,7 @@ class FeedsTest extends \PHPUnit_Framework_TestCase
            ->method('fetchAll')
            ->will($this->returnValue($results));
 
-        $repo = new \FindDotTorrent\Infrastructure\Persistence\PdoFeedRepository($this->db, $this->factory);
+        $repo = new Infrastructure\Persistence\PdoFeedRepository($this->db, $this->factory);
         $feeds = $repo->all();
 
         $this->assertCount(2, $feeds);
@@ -91,7 +96,7 @@ class FeedsTest extends \PHPUnit_Framework_TestCase
                array('label' => 'KickAss')
            );
 
-        $repo = new \FindDotTorrent\Infrastructure\Persistence\PdoFeedRepository($this->db, $this->factory);
+        $repo = new Infrastructure\Persistence\PdoFeedRepository($this->db, $this->factory);
         $repo->setStatus($feed, true);
     }
 }

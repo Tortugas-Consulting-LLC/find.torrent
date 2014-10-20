@@ -1,5 +1,10 @@
 <?php
 
+namespace FindDotTorrent\Ui\Controller;
+
+use FindDotTorrent\Domain;
+use FindDotTorrent\Ui;
+
 class SearchControllerTest extends \PHPUnit_Framework_TestCase
 {
     protected $repo;
@@ -20,7 +25,7 @@ class SearchControllerTest extends \PHPUnit_Framework_TestCase
                    ->method('getEnabled')
                    ->will($this->returnValue(array($kaFeed, $miniFeed)));
 
-        $controller = new \FindDotTorrent\Ui\Controller\SearchController($this->repo);
+        $controller = new Ui\Controller\SearchController($this->repo);
 
         $response = $controller->all('12 Angry Men');
 
@@ -37,7 +42,7 @@ class SearchControllerTest extends \PHPUnit_Framework_TestCase
                    ->with('KickAss')
                    ->will($this->returnValue($feed));
 
-        $controller = new \FindDotTorrent\Ui\Controller\SearchController($this->repo);
+        $controller = new Ui\Controller\SearchController($this->repo);
 
         $response = $controller->one('KickAss', '12 Angry Men');
 
@@ -52,7 +57,7 @@ class SearchControllerTest extends \PHPUnit_Framework_TestCase
                    ->with('non-existent-feed')
                    ->will($this->returnValue(false));
 
-        $controller = new \FindDotTorrent\Ui\Controller\SearchController($this->repo);
+        $controller = new Ui\Controller\SearchController($this->repo);
 
         $response = $controller->one('non-existent-feed', '12 Angry Men');
 
@@ -62,7 +67,7 @@ class SearchControllerTest extends \PHPUnit_Framework_TestCase
 
     protected function getMockFeed($title, $link, $label)
     {
-        $item = new \FindDotTorrent\Domain\Item($title, $link);
+        $item = new Domain\Item($title, $link);
         $item->setLabel($label);
 
         $feed = $this->getMock('\FindDotTorrent\Domain\Feed');

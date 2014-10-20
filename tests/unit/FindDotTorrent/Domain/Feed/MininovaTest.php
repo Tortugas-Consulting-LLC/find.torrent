@@ -1,12 +1,17 @@
 <?php
 
+namespace FindDotTorrent\Domain\Feed;
+
+use FindDotTorrent\Domain;
+use FindDotTorrent\Infrastructure;
+
 class MininovaTest extends \PHPUnit_Framework_TestCase
 {
     protected $translator;
 
     public function setUp()
     {
-        $this->translator = new \FindDotTorrent\Domain\Translator\Rss();
+        $this->translator = new Domain\Translator\Rss();
     }
 
     public function getMockClient($url, $content)
@@ -22,8 +27,8 @@ class MininovaTest extends \PHPUnit_Framework_TestCase
 
     public function testSerializesCorrectly()
     {
-        $feed = new \FindDotTorrent\Domain\Feed\Mininova(
-            new FindDotTorrent\Infrastructure\GuzzleClient(),
+        $feed = new Domain\Feed\Mininova(
+            new Infrastructure\GuzzleClient(),
             $this->translator,
             false
         );
@@ -47,7 +52,7 @@ class MininovaTest extends \PHPUnit_Framework_TestCase
             $content
         );
 
-        $feed = new \FindDotTorrent\Domain\Feed\Mininova(
+        $feed = new Domain\Feed\Mininova(
             $client,
             $this->translator,
             true

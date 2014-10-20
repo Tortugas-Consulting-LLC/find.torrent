@@ -1,12 +1,16 @@
 <?php
 
+namespace FindDotTorrent\Domain\Translator;
+
+use FindDotTorrent\Domain;
+
 class RssTest extends \PHPUnit_Framework_TestCase
 {
     public function testHandlesMininovaAppropriately()
     {
-        $content = file_get_contents(__DIR__ . '/../Fixtures/Mininova/12-angry-men.xml');
+        $content = file_get_contents(__DIR__ . '/../../Fixtures/Mininova/12-angry-men.xml');
 
-        $translator = new \FindDotTorrent\Domain\Translator\Rss();
+        $translator = new Domain\Translator\Rss();
         $items = $translator->translate($content);
 
         $this->assertInternalType('array', $items);
@@ -21,9 +25,9 @@ class RssTest extends \PHPUnit_Framework_TestCase
 
     public function testHandlesKickAssAppropriately()
     {
-        $content = file_get_contents(__DIR__ . '/../Fixtures/Kickass/12-angry-men.xml');
+        $content = file_get_contents(__DIR__ . '/../../Fixtures/Kickass/12-angry-men.xml');
 
-        $translator = new \FindDotTorrent\Domain\Translator\Rss();
+        $translator = new Domain\Translator\Rss();
         $items = $translator->translate($content);
 
         $this->assertInternalType('array', $items);

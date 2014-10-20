@@ -1,11 +1,16 @@
 <?php
 
+namespace FindDotTorrent\Domain\Feed;
+
+use FindDotTorrent\Domain;
+use FindDotTorrent\Infrastructure;
+
 class FactoryTest extends \PHPUnit_Framework_TestCase
 {
     public function testReturnsCorrectFeed()
     {
-        $client = new \FindDotTorrent\Infrastructure\GuzzleClient();
-        $factory = new \FindDotTorrent\Domain\Feed\Factory($client);
+        $client = new Infrastructure\GuzzleClient();
+        $factory = new Domain\Feed\Factory($client);
 
         $kickass = $factory->build(array('label' => 'KickAss', 'enabled' => true));
 
