@@ -8,7 +8,7 @@ use FindDotTorrent\Translator;
 /**
  * A feed handler for Mininova torrents
  */
-class Mininova implements \FindDotTorrent\Feed, \JsonSerializable
+class Mininova implements \FindDotTorrent\Domain\Feed, \JsonSerializable
 {
     /**
      * @var Domain\Client

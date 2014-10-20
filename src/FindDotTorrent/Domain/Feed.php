@@ -1,6 +1,6 @@
 <?php
 
-namespace FindDotTorrent;
+namespace FindDotTorrent\Domain;
 
 /**
  * Each feed should take a search term and return an array of Item objects

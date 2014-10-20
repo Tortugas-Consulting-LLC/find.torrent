@@ -8,7 +8,7 @@ use FindDotTorrent\Translator;
 /**
  * A feed handler for KickAss torrents
  */
-class KickAss implements \FindDotTorrent\Feed, \JsonSerializable
+class KickAss implements \FindDotTorrent\Domain\Feed, \JsonSerializable
 {
     /**
      * @var Domain\Client

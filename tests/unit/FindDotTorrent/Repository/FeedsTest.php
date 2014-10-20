@@ -78,7 +78,7 @@ class FeedsTest extends \PHPUnit_Framework_TestCase
 
     public function testCanSetStatus()
     {
-        $feed = $this->getMock('\FindDotTorrent\Feed');
+        $feed = $this->getMock('\FindDotTorrent\Domain\Feed');
         $feed->expects($this->once())
              ->method('getLabel')
              ->will($this->returnValue('KickAss'));

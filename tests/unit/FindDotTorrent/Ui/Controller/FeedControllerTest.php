@@ -15,8 +15,8 @@ class FeedControllerTest extends \PHPUnit_Framework_TestCase
 
     public function testCanGetAll()
     {
-        $kaFeed = $this->getMock('\FindDotTorrent\Feed');
-        $miniFeed = $this->getMock('\FindDotTorrent\Feed');
+        $kaFeed = $this->getMock('\FindDotTorrent\Domain\Feed');
+        $miniFeed = $this->getMock('\FindDotTorrent\Domain\Feed');
 
         $this->repo->expects($this->once())
                    ->method('all')
@@ -32,7 +32,7 @@ class FeedControllerTest extends \PHPUnit_Framework_TestCase
 
     public function testCanSetStatus()
     {
-        $feed = $this->getMock('\FindDotTorrent\Feed');
+        $feed = $this->getMock('\FindDotTorrent\Domain\Feed');
 
         $this->repo->expects($this->once())
                    ->method('get')

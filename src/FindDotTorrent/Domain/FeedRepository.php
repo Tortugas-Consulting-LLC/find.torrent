@@ -2,7 +2,7 @@
 
 namespace FindDotTorrent\Domain;
 
-use FindDotTorrent\Feed;
+use FindDotTorrent\Domain\Feed;
 
 interface FeedRepository
 {

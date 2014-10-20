@@ -65,7 +65,7 @@ class SearchControllerTest extends \PHPUnit_Framework_TestCase
         $item = new \FindDotTorrent\Domain\Item($title, $link);
         $item->setLabel($label);
 
-        $feed = $this->getMock('\FindDotTorrent\Feed');
+        $feed = $this->getMock('\FindDotTorrent\Domain\Feed');
         $feed->expects($this->once())
              ->method('search')
              ->will($this->returnValue(array($item)));

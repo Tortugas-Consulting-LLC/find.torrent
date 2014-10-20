@@ -9,12 +9,12 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
 
         $kickass = $factory->build(array('label' => 'KickAss', 'enabled' => true));
 
-        $this->assertInstanceOf('\FindDotTorrent\Feed', $kickass);
+        $this->assertInstanceOf('\FindDotTorrent\Domain\Feed', $kickass);
         $this->assertInstanceOf('\FindDotTorrent\Domain\Feed\KickAss', $kickass);
 
         $mininova = $factory->build(array('label' => 'Mininova', 'enabled' => true));
 
-        $this->assertInstanceOf('\FindDotTorrent\Feed', $mininova);
+        $this->assertInstanceOf('\FindDotTorrent\Domain\Feed', $mininova);
         $this->assertInstanceOf('\FindDotTorrent\Domain\Feed\Mininova', $mininova);
 
         try {
