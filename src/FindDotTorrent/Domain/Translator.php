@@ -1,6 +1,6 @@
 <?php
 
-namespace FindDotTorrent;
+namespace FindDotTorrent\Domain;
 
 /**
  * A translator is responsible for taking raw content and extracting the

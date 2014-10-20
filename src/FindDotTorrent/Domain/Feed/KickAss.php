@@ -3,7 +3,7 @@
 namespace FindDotTorrent\Domain\Feed;
 
 use FindDotTorrent\Domain;
-use FindDotTorrent\Translator;
+use FindDotTorrent\Domain\Translator;
 
 /**
  * A feed handler for KickAss torrents

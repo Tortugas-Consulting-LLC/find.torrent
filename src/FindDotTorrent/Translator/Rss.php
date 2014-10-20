@@ -8,7 +8,7 @@ namespace FindDotTorrent\Translator;
  * The rss translator should be able to take raw rss content and return an
  * array of Item objects
  */
-class Rss implements \FindDotTorrent\Translator
+class Rss implements \FindDotTorrent\Domain\Translator
 {
     /**
      * Translate the raw content into an array of Item objects
