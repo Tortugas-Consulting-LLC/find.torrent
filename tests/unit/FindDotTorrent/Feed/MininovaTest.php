@@ -22,7 +22,7 @@ class MininovaTest extends \PHPUnit_Framework_TestCase
 
     public function testSerializesCorrectly()
     {
-        $feed = new \FindDotTorrent\Feed\Mininova(
+        $feed = new \FindDotTorrent\Domain\Feed\Mininova(
             new FindDotTorrent\Infrastructure\GuzzleClient(),
             $this->translator,
             false
@@ -47,7 +47,7 @@ class MininovaTest extends \PHPUnit_Framework_TestCase
             $content
         );
 
-        $feed = new \FindDotTorrent\Feed\Mininova(
+        $feed = new \FindDotTorrent\Domain\Feed\Mininova(
             $client,
             $this->translator,
             true

@@ -1,14 +1,14 @@
 <?php
 
-namespace FindDotTorrent\Feed;
+namespace FindDotTorrent\Domain\Feed;
 
 use FindDotTorrent\Domain;
 use FindDotTorrent\Translator;
 
 /**
- * A feed handler for Mininova torrents
+ * A feed handler for KickAss torrents
  */
-class Mininova implements \FindDotTorrent\Feed, \JsonSerializable
+class KickAss implements \FindDotTorrent\Feed, \JsonSerializable
 {
     /**
      * @var Domain\Client
@@ -28,7 +28,6 @@ class Mininova implements \FindDotTorrent\Feed, \JsonSerializable
     /**
      * @param Domain\Client $client
      * @param Translator $translator
-     * @param boolean $enabled
      */
     public function __construct(Domain\Client $client, Translator $translator, $enabled)
     {
@@ -46,7 +45,7 @@ class Mininova implements \FindDotTorrent\Feed, \JsonSerializable
     public function search($term)
     {
         $url = sprintf(
-            "http://mininova.org/rss/%s",
+            "http://kickass.to/usearch/%s/?rss=1",
             rawurlencode($term)
         );
 
@@ -65,7 +64,7 @@ class Mininova implements \FindDotTorrent\Feed, \JsonSerializable
      */
     public function getLabel()
     {
-        return 'Mininova';
+        return 'KickAss';
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace FindDotTorrent\Feed;
+namespace FindDotTorrent\Domain\Feed;
 
 use FindDotTorrent\Domain;
 use FindDotTorrent\Translator;

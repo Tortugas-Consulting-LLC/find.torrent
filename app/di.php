@@ -5,7 +5,7 @@ $app['guzzle.client'] = $app->share(function() {
 });
 
 $app['feed.factory'] = $app->share(function() use ($app) {
-    return new \FindDotTorrent\Feed\Factory($app['guzzle.client']);
+    return new \FindDotTorrent\Domain\Feed\Factory($app['guzzle.client']);
 });
 
 $app['feeds.repository'] = $app->share(function() use ($app) {

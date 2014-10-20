@@ -4,7 +4,7 @@ namespace FindDotTorrent\Infrastructure\Persistence;
 
 use Doctrine\DBAL\Connection;
 use FindDotTorrent\Domain;
-use FindDotTorrent\Feed\Factory;
+use FindDotTorrent\Domain\Feed\Factory;
 use FindDotTorrent\Feed;
 
 class PdoFeedRepository implements Domain\FeedRepository

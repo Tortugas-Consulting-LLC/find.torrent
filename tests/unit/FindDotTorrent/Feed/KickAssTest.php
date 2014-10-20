@@ -22,7 +22,7 @@ class KickAssTest extends \PHPUnit_Framework_TestCase
 
     public function testSerializesCorrectly()
     {
-        $feed = new \FindDotTorrent\Feed\KickAss(
+        $feed = new \FindDotTorrent\Domain\Feed\KickAss(
             new FindDotTorrent\Infrastructure\GuzzleClient(),
             $this->translator,
             false
@@ -46,7 +46,7 @@ class KickAssTest extends \PHPUnit_Framework_TestCase
             $content
         );
 
-        $feed = new \FindDotTorrent\Feed\KickAss(
+        $feed = new \FindDotTorrent\Domain\Feed\KickAss(
             $client,
             $this->translator,
             true

@@ -8,7 +8,7 @@ class FeedsTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $client = new \FindDotTorrent\Infrastructure\GuzzleClient();
-        $this->factory = new \FindDotTorrent\Feed\Factory($client);
+        $this->factory = new \FindDotTorrent\Domain\Feed\Factory($client);
         $this->db = $this->getMockBuilder('\Doctrine\DBAL\Connection')
                          ->disableOriginalConstructor()
                          ->getMock();
@@ -29,8 +29,8 @@ class FeedsTest extends \PHPUnit_Framework_TestCase
         $feeds = $repo->getEnabled();
 
         $this->assertCount(2, $feeds);
-        $this->assertInstanceOf('\FindDotTorrent\Feed\KickAss', $feeds[0]);
-        $this->assertInstanceOf('\FindDotTorrent\Feed\Mininova', $feeds[1]);
+        $this->assertInstanceOf('\FindDotTorrent\Domain\Feed\KickAss', $feeds[0]);
+        $this->assertInstanceOf('\FindDotTorrent\Domain\Feed\Mininova', $feeds[1]);
     }
 
     public function testCanGetIndividualFeed()
@@ -42,7 +42,7 @@ class FeedsTest extends \PHPUnit_Framework_TestCase
         $repo = new \FindDotTorrent\Infrastructure\Persistence\PdoFeedRepository($this->db, $this->factory);
         $feed = $repo->get('KickAss');
 
-        $this->assertInstanceOf('\FindDotTorrent\Feed\KickAss', $feed);
+        $this->assertInstanceOf('\FindDotTorrent\Domain\Feed\KickAss', $feed);
     }
 
     public function testReturnsFalseForNoMatch()
@@ -72,8 +72,8 @@ class FeedsTest extends \PHPUnit_Framework_TestCase
         $feeds = $repo->all();
 
         $this->assertCount(2, $feeds);
-        $this->assertInstanceOf('\FindDotTorrent\Feed\KickAss', $feeds[0]);
-        $this->assertInstanceOf('\FindDotTorrent\Feed\Mininova', $feeds[1]);
+        $this->assertInstanceOf('\FindDotTorrent\Domain\Feed\KickAss', $feeds[0]);
+        $this->assertInstanceOf('\FindDotTorrent\Domain\Feed\Mininova', $feeds[1]);
     }
 
     public function testCanSetStatus()
