@@ -8,8 +8,15 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * Class CreateCommand
+ * @package FindDotTorrent\Console\Commands\Api\Keys
+ */
 class CreateCommand extends Command
 {
+    /**
+     * @var App
+     */
     protected $app;
 
     protected function configure()
@@ -18,11 +25,18 @@ class CreateCommand extends Command
             ->setDescription('Generates a new API key.');
     }
 
+    /**
+     * @param App $app
+     */
     public function addApp(App $app)
     {
         $this->app = $app;
     }
 
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         /** @var KeyHandler $dbal */

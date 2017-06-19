@@ -9,8 +9,15 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * Class DeleteCommand
+ * @package FindDotTorrent\Console\Commands\Api\Keys
+ */
 class DeleteCommand extends Command
 {
+    /**
+     * @var App
+     */
     protected $app;
 
     protected function configure()
@@ -24,6 +31,9 @@ class DeleteCommand extends Command
             );
     }
 
+    /**
+     * @param App $app
+     */
     public function addApp(App $app)
     {
         $this->app = $app;

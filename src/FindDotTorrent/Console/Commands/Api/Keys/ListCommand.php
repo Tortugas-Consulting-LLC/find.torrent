@@ -9,8 +9,15 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * Class ListCommand
+ * @package FindDotTorrent\Console\Commands\Api\Keys
+ */
 class ListCommand extends Command
 {
+    /**
+     * @var App
+     */
     protected $app;
 
     protected function configure()
@@ -19,6 +26,9 @@ class ListCommand extends Command
             ->setDescription('List all registered API keys.');
     }
 
+    /**
+     * @param App $app
+     */
     public function addApp(App $app)
     {
         $this->app = $app;
