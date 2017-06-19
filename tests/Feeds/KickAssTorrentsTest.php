@@ -20,9 +20,9 @@ class KickAssTorrentsTest extends TestCase
     public function urlProvider()
     {
         return array(
-            array('12 Angry Men', 'http://kickass.to/usearch/12%20Angry%20Men/?rss=1'),
-            array('Law & Order', 'http://kickass.to/usearch/Law%20%26%20Order/?rss=1'),
-            array("Gideon's Trumpet", 'http://kickass.to/usearch/Gideon%27s%20Trumpet/?rss=1')
+            array('12 Angry Men', 'https://kickass.to/usearch/12%20Angry%20Men/?rss=1'),
+            array('Law & Order', 'https://kickass.to/usearch/Law%20%26%20Order/?rss=1'),
+            array("Gideon's Trumpet", 'https://kickass.to/usearch/Gideon%27s%20Trumpet/?rss=1')
         );
     }
 
@@ -55,6 +55,6 @@ class KickAssTorrentsTest extends TestCase
 
     public function testUrl()
     {
-        $this->assertEquals('http://kat.ph', $this->feed->getUrl());
+        $this->assertEquals('https://kat.ph', $this->feed->getUrl());
     }
 }
