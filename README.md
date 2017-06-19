@@ -13,7 +13,7 @@ Requirements
 
 Installation
 ------------
-1. Clone this repo
+1. Clone this repo (`git clone https://github.com/tortugas-consulting-llc/find.torrent`)
 2. Install dependencies
     * Run `php composer.phar install`
 3. Create a database with the schema file at `db/install.sql`
@@ -80,7 +80,7 @@ if (200 == $status) {
 print PHP_EOL;
 ```
 
-API keys can be reviewed / deleted through the console interface. Run `php -f app/console.php api-key:list` to get a summary of the available commands.
+API keys can be reviewed / deleted through the console interface. Run `php -f app/console.php list` to get a summary of the available commands.
 
 [Chris Cornutt on websec.io]: https://websec.io/2013/02/14/API-Authentication-Public-Private-Hashes.html
 [application/hal+json or application/hal+xml]: http://stateless.co/hal_specification.html
