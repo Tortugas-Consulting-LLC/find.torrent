@@ -1,8 +1,11 @@
 <?php
+use FindDotTorrent\Feeds;
+
 $app->path('feeds', function($request) use($app) {
     $app->filter('authenticate');
 
     $make_feed_hal = function($feed) use($app) {
+        /** @var Feeds\BaseFeed $feed */
         $feed_hal = new \Nocarrier\Hal('/feeds/' . $feed->getIdentifier(), array(
             "name"    => $feed->getName(),
             "url"     => $feed->getUrl(),
@@ -21,6 +24,8 @@ $app->path('feeds', function($request) use($app) {
         }
 
         $app->put(function($request) use($app, $feed, $make_feed_hal) {
+            /** @var Feeds\BaseFeed $feed */
+            /** @var \Bullet\Request $request */
             $feed->setEnabled($request->get("enabled"));
             $app['FeedHandler']->persist($feed);
             return $make_feed_hal($feed);
