@@ -4,8 +4,8 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 use FindDotTorrent\Console\Commands\Api\Keys\CreateCommand;
-use FindDotTorrent\Console\Commands\Api\Keys\ListCommand;
 use FindDotTorrent\Console\Commands\Api\Keys\DeleteCommand;
+use FindDotTorrent\Console\Commands\Api\Keys\ListCommand;
 use Symfony\Component\Console\Application;
 
 $app = new FindDotTorrent\App();
