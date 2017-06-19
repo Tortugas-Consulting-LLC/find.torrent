@@ -1,4 +1,6 @@
 {
+  "name": "tortugas-consulting-llc/find-torrent",
+  "license": "MIT",
   "require-dev": {
     "phpunit/phpunit": "6.2.*"
   },
