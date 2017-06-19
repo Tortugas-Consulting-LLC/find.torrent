@@ -14,8 +14,9 @@ class BaseFeedTest extends BulletTestCase
 
     public function setup()
     {
-        $this->feed = $this->getMock('\FindDotTorrent\Feeds\BaseFeed',
-            array('makeSearchUrl', 'fetchResults', 'getUrl'));
+        $this->feed = $this->getMockBuilder('\FindDotTorrent\Feeds\BaseFeed')
+            ->setMethods(['makeSearchUrl', 'fetchResults', 'getUrl'])
+            ->getMock();
     }
 
     public function testFeedName()
