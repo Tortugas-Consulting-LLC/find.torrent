@@ -2,11 +2,14 @@
 
 namespace Tests\Feeds;
 
-use \Tests\BulletTestCase;
-use \FindDotTorrent\FeedHandler;
+use FindDotTorrent\FeedHandler;
+use Tests\BulletTestCase;
 
 class FeedHandlertest extends BulletTestCase
 {
+    /**
+     * @var FeedHandler
+     */
     protected $handler;
 
     public function setup()

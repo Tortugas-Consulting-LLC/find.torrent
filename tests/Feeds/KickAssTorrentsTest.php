@@ -2,10 +2,14 @@
 
 namespace Tests\Feeds;
 
-use \FindDotTorrent\Feeds\KickAssTorrents;
+use FindDotTorrent\Feeds\KickAssTorrents;
+use PHPUnit\Framework\TestCase;
 
-class KickAssTorrentsTest extends \PHPUnit_Framework_TestCase
+class KickAssTorrentsTest extends TestCase
 {
+    /**
+     * @var KickAssTorrents
+     */
     protected $feed;
 
     public function setUp()

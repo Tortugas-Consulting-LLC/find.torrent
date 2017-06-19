@@ -2,10 +2,14 @@
 
 namespace Tests\Feeds;
 
-use \FindDotTorrent\Feeds\Mininova;
+use FindDotTorrent\Feeds\Mininova;
+use PHPUnit\Framework\TestCase;
 
-class MininovaTest extends \PHPUnit_Framework_TestCase
+class MininovaTest extends TestCase
 {
+    /**
+     * @var Mininova
+     */
     protected $feed;
 
     public function setUp()
