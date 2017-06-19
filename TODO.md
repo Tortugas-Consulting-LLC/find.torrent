@@ -7,7 +7,7 @@ Find.Torrent Issue Tracker Of Awesome
 - [ ] Authentication (Update README)
 - [ ] Define an installation procedure (console?)
     - [ ] Detect an unconfigured or misconfigured install
-- [ ] Determine the response format based on HTTP headers instead of a configuration value
+- [x] Determine the response format based on HTTP headers instead of a configuration value
 - [ ] Handle 404 with a template
 - [ ] Need to frisby test the database?
 - [ ] We still need to try to support file listings, and seeders and leechers.

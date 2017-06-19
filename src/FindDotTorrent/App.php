@@ -25,8 +25,10 @@ class App extends \Bullet\App
 
         parent::__construct($config);
 
-        // In our closures and our route files we reference $app which is just
-        // this object. Make this association for convenience and clarity;
+        /*
+         * In our closures and our route files we reference $app which is just
+         * this object. Make this association for convenience and clarity.
+         */
         $app = $this;
 
         foreach (glob($dir_routes . "/*.php") as $filename) {
@@ -43,10 +45,11 @@ class App extends \Bullet\App
             },
             // Response modifier
             function ($response) use ($app) {
+                $bRequestTypeIsXML = self::checkIsXML();
                 /**
                  * @var Response $response ->content()
                  */
-                if ('xml' === strtolower($app['response_format'])) {
+                if ($bRequestTypeIsXML) {
                     $response->content($response->content()->asXml());
                     $response->contentType('application/hal+xml');
                 } else {
@@ -71,6 +74,28 @@ class App extends \Bullet\App
         $this['KeyHandler'] = function ($app) {
             return new KeyHandler($app['db']);
         };
+    }
+
+    /**
+     * @return bool
+     */
+    public static function checkIsXML()
+    {
+        $sContentType = (isset($_SERVER['CONTENT_TYPE']) ?
+            $_SERVER['CONTENT_TYPE'] :
+            isset($_SERVER['HTTP_CONTENT_TYPE']) ?
+                $_SERVER['HTTP_CONTENT_TYPE'] :
+                'text/json'
+        );
+
+        return in_array(
+            $sContentType,
+            [
+                'application/xml',
+                'text/xml',
+                'application/hal+xml'
+            ]
+        );
     }
 
     /**
