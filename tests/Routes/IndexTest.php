@@ -2,13 +2,16 @@
 
 namespace Tests\Routes;
 
-class IndexTest extends \Tests\BulletTestCase
+use Bullet\Request;
+use Tests\BulletTestCase;
+
+class IndexTest extends BulletTestCase
 {
     protected $json;
 
     public function setup()
     {
-        $request = new \Bullet\Request('GET', '/');
+        $request = new Request('GET', '/');
         $response = $this->getApp()->run($request);
         $this->json = json_decode($response->content());
     }
