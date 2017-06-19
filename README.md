@@ -28,7 +28,7 @@ Documentation of the service endpoints can be found by browsing to `/rels/`. API
 
 Responses are in either [application/hal+json or application/hal+xml](http://stateless.co/hal_specification.html) depending on your `config.ini`.
 
-API requests use a simple Public Key / Shared Secret Key hashing method for authentication. Create a key pair on the server using the console interface by running `php -f src/console.php api-key:create`. Store these two values in the config for your application. When making requests send the following headers:
+API requests use a simple Public Key / Shared Secret Key hashing method for authentication. Create a key pair on the server using the console interface by running `php -f app/console.php api-key:create`. Store these two values in the config for your application. When making requests send the following headers:
 
 * **X-Public-Key**: The public key to identify the requester
 * **X-Request-Timestamp**: A date/time string or unix timestamp to uniquely identify the request. Protects against replay attacks.
