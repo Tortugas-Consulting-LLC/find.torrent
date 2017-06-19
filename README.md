@@ -2,7 +2,7 @@
 
 find.torrent
 ===========
-find.torrent is a service to facilitate the discovery and downloading of torrent files to a home server or leachbox. The service provides a REST API for searching configured torrent RSS feeds and triggering a file download at the server. Neither the torrent file nor its indicated content is returned to the client; the .torrent file is simply downloaded to a configured location at the server. Another service such as [Transmission](http://www.transmissionbt.com/) needs to be running on the server to process the downloaded .torrents for any additional action to be taken.
+find.torrent is a service to facilitate the discovery and downloading of torrent files to a home server or leachbox. The service provides a REST API for searching configured torrent RSS feeds and triggering a file download at the server. Neither the torrent file nor its indicated content is returned to the client; the .torrent file is simply downloaded to a configured location at the server. Another service such as [Transmission] needs to be running on the server to process the downloaded .torrents for any additional action to be taken.
 
 Requirements
 ------------
@@ -24,9 +24,9 @@ Copy `src/config/config.example.ini` to `src/config/config.ini` and fill in the 
 
 API Documentation
 -----------------
-Documentation of the service endpoints can be found by browsing to `/rels/`. API reponses use the CURIE syntax to show where to find documentation for a specific resource.
+Documentation of the service endpoints can be found by browsing to `/rels/`. API responses use the CURIE syntax to show where to find documentation for a specific resource.
 
-Responses are in either [application/hal+json or application/hal+xml](http://stateless.co/hal_specification.html) depending on your `config.ini`.
+Responses are in either [application/hal+json or application/hal+xml] depending on your `config.ini`.
 
 API requests use a simple Public Key / Shared Secret Key hashing method for authentication. Create a key pair on the server using the console interface by running `php -f app/console.php api-key:create`. Store these two values in the config for your application. When making requests send the following headers:
 
@@ -34,8 +34,8 @@ API requests use a simple Public Key / Shared Secret Key hashing method for auth
 * **X-Request-Timestamp**: A date/time string or unix timestamp to uniquely identify the request. Protects against replay attacks.
 * **X-Content-Hash**: A SHA256 hash of (in this order) the public key, the request timestamp value, and the request body (if any). This has should be generated using the private key.
 
-An example request is shown below. This comes mainly from [Chris Cornutt on websec.io](http://websec.io/2013/02/14/API-Authentication-Public-Private-Key.html).
-~~~ php
+An example request is shown below. This comes mainly from [Chris Cornutt on websec.io].
+```php
 <?php
 
 $public_key  = "1fcdc1456ccfc1f4d849a8d66f14d12874e8d5befcaac9498b528758f60155c0";
@@ -50,17 +50,22 @@ $body = json_encode(array(
 $hash_basis = $public_key . $request_timestamp . $body;
 $hash = hash_hmac("sha256", $hash_basis, $private_key);
 
-$headers = array(
+$headers = [
     "X-Public-Key: {$public_key}",
     "X-Request-Timestamp: {$request_timestamp}",
     "X-Content-Hash: {$hash}"
-);
+];
 
 $ch = curl_init("http://localhost:8001/about");
 
-curl_setopt($ch, CURLOPT_HTTPHEADER,     $headers);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS,     $body);
+curl_setopt_array(
+    $ch,
+    [
+        CURLOPT_HTTPHEADER =>     $headers,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_POSTFIELDS =>     $body
+    ]
+);
 
 $result = curl_exec($ch);
 $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -73,6 +78,10 @@ if (200 == $status) {
     print $result;
 }
 print PHP_EOL;
-~~~
+```
 
-API keys can be reviewed / deleted through the console interface. Run `php -f app/console.php list` to get a summary of the available commands.
+API keys can be reviewed / deleted through the console interface. Run `php -f app/console.php api-key:list` to get a summary of the available commands.
+
+[Chris Cornutt on websec.io]: https://websec.io/2013/02/14/API-Authentication-Public-Private-Hashes.html
+[application/hal+json or application/hal+xml]: http://stateless.co/hal_specification.html
+[Transmission]: https://transmissionbt.com
