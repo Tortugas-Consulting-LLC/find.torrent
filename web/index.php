@@ -7,14 +7,14 @@ $request = new \Bullet\Request();
 
 $app = new FindDotTorrent\App();
 
-$app->on("authenticate", function($request, $response) use ($app) {
+$app->on("authenticate", function (\Bullet\Request $request, \Bullet\Response $response) use ($app) {
     if (true !== ($authentication_result = $app->requestIsAuthenticated($request))) {
         echo $app->response(401, $authentication_result);
         exit;
     }
 });
 
-$app->on("Exception", function($request, $response, $exception) {
+$app->on("Exception", function (\Bullet\Request $request, \Bullet\Response $response, \Exception $exception) {
     print $exception->getMessage();
 });
 
