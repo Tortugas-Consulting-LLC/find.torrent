@@ -1,15 +1,17 @@
 {
   "require-dev": {
-      "phpunit/phpunit": "~4.0.0"
+    "phpunit/phpunit": "6.2.*"
   },
   "require": {
-    "vlucas/bulletphp": "*",
-    "nocarrier/hal": "*",
-    "michelf/php-markdown": "*",
-    "symfony/console": "*"
+    "vlucas/bulletphp": "1.4.*",
+    "nocarrier/hal": "0.9.*",
+    "michelf/php-markdown": "1.7.*",
+    "symfony/console": "3.3.*"
   },
   "minimum-stability": "dev",
   "autoload": {
-    "psr-0": {"FindDotTorrent": "src/"}
+    "psr-0": {
+      "FindDotTorrent": "src/"
+    }
   }
 }
