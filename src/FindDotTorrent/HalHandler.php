@@ -5,10 +5,10 @@ namespace FindDotTorrent;
 use NoCarrier\Hal;
 
 /**
- * Class Halhandler
+ * Class HalHandler
  * @package FindDotTorrent
  */
-class Halhandler
+class HalHandler
 {
     /**
      * @var \Bullet\App
@@ -16,7 +16,7 @@ class Halhandler
     protected $app;
 
     /**
-     * Halhandler constructor.
+     * HalHandler constructor.
      * @param \Bullet\App $app
      */
     public function __construct(\Bullet\App $app)
