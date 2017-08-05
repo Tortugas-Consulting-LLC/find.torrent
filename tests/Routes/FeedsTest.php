@@ -2,13 +2,16 @@
 
 namespace Tests\Routes;
 
-class FeedsTest extends \Tests\BulletTestCase
+use Bullet\Request;
+use Tests\BulletTestCase;
+
+class FeedsTest extends BulletTestCase
 {
     protected $json;
 
     public function setup()
     {
-        $request = new \Bullet\Request('GET', '/feeds/');
+        $request = new Request('GET', '/feeds/');
         $response = $this->getApp()->run($request);
         $this->json = json_decode($response->content());
     }

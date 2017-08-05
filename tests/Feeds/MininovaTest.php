@@ -2,10 +2,14 @@
 
 namespace Tests\Feeds;
 
-use \FindDotTorrent\Feeds\Mininova;
+use FindDotTorrent\Feeds\Mininova;
+use PHPUnit\Framework\TestCase;
 
-class MininovaTest extends \PHPUnit_Framework_TestCase
+class MininovaTest extends TestCase
 {
+    /**
+     * @var Mininova
+     */
     protected $feed;
 
     public function setUp()
@@ -16,9 +20,9 @@ class MininovaTest extends \PHPUnit_Framework_TestCase
     public function urlProvider()
     {
         return array(
-            array('12 Angry Men', 'http://mininova.org/rss/12+Angry+Men'),
-            array('Law & Order', 'http://mininova.org/rss/Law+%26+Order'),
-            array("Gideon's Trumpet", 'http://mininova.org/rss/Gideon%27s+Trumpet')
+            array('12 Angry Men', 'https://mininova.org/rss/12+Angry+Men'),
+            array('Law & Order', 'https://mininova.org/rss/Law+%26+Order'),
+            array("Gideon's Trumpet", 'https://mininova.org/rss/Gideon%27s+Trumpet')
         );
     }
 
@@ -51,6 +55,6 @@ class MininovaTest extends \PHPUnit_Framework_TestCase
 
     public function testUrl()
     {
-        $this->assertEquals('http://mininova.org', $this->feed->getUrl());
+        $this->assertEquals('https://mininova.org', $this->feed->getUrl());
     }
 }

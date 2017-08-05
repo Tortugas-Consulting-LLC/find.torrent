@@ -1,4 +1,6 @@
 <?php
+use Nocarrier\Hal;
+
 $app->path('about', function($request) use($app) {
     $app->filter('authenticate');
 
@@ -8,7 +10,7 @@ $app->path('about', function($request) use($app) {
         'version' => '0.0.1',
     );
 
-    $hal = new \Nocarrier\Hal('/about/', $data);
+    $hal = new Hal('/about/', $data);
 
     $app['HalHandler']->addMyCurie($hal);
 

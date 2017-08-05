@@ -1,10 +1,12 @@
 <?php
+use Nocarrier\Hal;
+
 $app->path('/', function($request) use($app) {
     $app->filter('authenticate');
 
     $data = array('welcome' => $app['welcome_msg']);
 
-    $hal = new \Nocarrier\Hal('/', $data);
+    $hal = new Hal('/', $data);
     $app['HalHandler']->addMyCurie($hal);
 
     $hal->addLink('ft:about', '/about/');

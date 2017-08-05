@@ -29,6 +29,8 @@ abstract class BaseFeed implements IFeed
     }
 
     abstract public function getUrl();
+
     abstract public function makeSearchUrl($term);
+
     abstract public function fetchResults($response);
 }

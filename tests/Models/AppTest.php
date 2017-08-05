@@ -2,7 +2,9 @@
 
 namespace Tests\Models;
 
-class AppTest extends \Tests\BulletTestCase
+use Tests\BulletTestCase;
+
+class AppTest extends BulletTestCase
 {
     public function testAppCanGiveMeAFeedHandler()
     {

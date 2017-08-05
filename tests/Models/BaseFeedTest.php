@@ -2,13 +2,21 @@
 
 namespace Tests\Models;
 
-class BaseFeedTest extends \Tests\BulletTestCase
+use FindDotTorrent\Feeds\BaseFeed;
+use Tests\BulletTestCase;
+
+class BaseFeedTest extends BulletTestCase
 {
+    /**
+     * @var BaseFeed
+     */
     protected $feed;
 
     public function setup()
     {
-        $this->feed = $this->getMock('\FindDotTorrent\Feeds\BaseFeed', array('makeSearchUrl', 'fetchResults', 'getUrl'));
+        $this->feed = $this->getMockBuilder('\FindDotTorrent\Feeds\BaseFeed')
+            ->setMethods(['makeSearchUrl', 'fetchResults', 'getUrl'])
+            ->getMock();
     }
 
     public function testFeedName()

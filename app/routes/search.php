@@ -1,14 +1,16 @@
 <?php
-$app->path('/search', function($request) use($app) {
+use FindDotTorrent\Feeds;
+
+$app->path('/search', function ($request) use ($app) {
     $app->filter('authenticate');
 
     $app->param('slug', function ($request, $term) use ($app) {
-        $results = array();
         $hal = new \Nocarrier\Hal('/search');
 
-        foreach($app['FeedHandler']->findAll() as $feed) {
+        foreach ($app['FeedHandler']->findAll() as $feed) {
             $feed_results = \FindDotTorrent\Feeds\Fetch::fetchResults($term, $feed);
-            foreach($feed_results as $result) {
+            foreach ($feed_results as $result) {
+                /** @var Feeds\SearchResult $result */
                 $hal->addLink('ft:torrent', '/download/', array(
                     'title' => $result->getTitle(),
                     'target' => $result->getLink(),
